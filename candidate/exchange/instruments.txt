@@ -1,0 +1,4 @@
+# feed  tick  ref  band  minvol  maxvol     poslim       maxtps
+AAH6    1     600  5000  1       10000000   1000000000   0
+AAM6    1     600  5000  1       10000000   1000000000   0
+AAU6    1     600  5000  1       10000000   1000000000   0

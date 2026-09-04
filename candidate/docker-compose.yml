@@ -1,0 +1,78 @@
+# Brings up NATS + the simulated exchange, a sample market, and your desk.
+#
+#   docker compose up                                   # NATS + exchange only
+#   docker compose --profile sim up                     # + the sample market
+#   docker compose --profile sim --profile strategy up  # + your desk (taker + quoter + hedger)
+#
+# All services share a private network and reach each other by name
+# (the exchange's NATS is `nats://nats:4222`). NATS is also published to the host
+# on :4222 for development (so the `nats` CLI works); your *desk* should talk
+# to nats://nats:4222 from inside its containers, not to the host.
+services:
+  nats:
+    image: nats:latest
+    command: ["-js"]
+    ports:
+      - "4222:4222"
+
+  exchange:
+    image: sim-exchange:candidate
+    platform: linux/amd64      # prebuilt image; emulated on arm64 (see README)
+    environment:
+      NATS_URL: nats://nats:4222
+      EX_CONFIG: /instruments.txt
+      EX_SHARDS: "1"
+    volumes:
+      - ./exchange/instruments.txt:/instruments.txt:ro
+    depends_on:
+      - nats
+    restart: on-failure        # retries until NATS is ready
+
+  sim:
+    build: ./sim
+    environment:
+      NATS_URL: nats://nats:4222
+    depends_on:
+      - exchange
+    restart: on-failure
+    profiles:
+      - sim
+
+  # ---- the desk: three seats, three senders ------------------------------- #
+  # Every seat container gets all three sender ids, so the seats can find each
+  # other (e.g. a hedger watching its siblings' fills) however you choose.
+  # The desk's existing taker. Provided; it runs as-is alongside your seats.
+  taker:
+    build: ./taker
+    environment: &desk-env
+      NATS_URL: nats://nats:4222
+      SENDER: ${SENDER:-QUOTE001}
+      TAKER_SENDER: ${TAKER_SENDER:-PYTKR001}
+      HEDGER_SENDER: ${HEDGER_SENDER:-HEDGE001}
+      TAKER_FEED: AAH6
+      TAKER_RUN: "86400"
+    depends_on:
+      - exchange
+    restart: on-failure
+    profiles:
+      - strategy
+
+  # Your quoter. Put your code + Dockerfile in ./strategy (see TASK.md).
+  strategy:
+    build: ./strategy
+    environment: *desk-env
+    depends_on:
+      - exchange
+    restart: on-failure
+    profiles:
+      - strategy
+
+  # Your hedger. Put your code + Dockerfile in ./hedger (see TASK.md).
+  hedger:
+    build: ./hedger
+    environment: *desk-env
+    depends_on:
+      - exchange
+    restart: on-failure
+    profiles:
+      - strategy
