@@ -82,7 +82,7 @@ class Taker:
             oid = self.next_oid()
             order = f"{SENDER} A {FEED} {oid} {side} {CLIP} {px} F"
             try:
-                reply = await self.nc.request("ex.req", order.encode(), timeout=1.0)
+                reply = await self.nc.request(f"ex.req.{SENDER}", order.encode(), timeout=1.0)
             except Exception:
                 return  # timed out; treat as no fill
             parts = reply.data.decode().split()
@@ -98,7 +98,7 @@ class Taker:
                 self.fills += 1
 
     def apply_fill(self, side, qty, px):
-        signed = qty if side == "B" else qty
+        signed = qty if side == "B" else -qty
         self.position += signed
         self.cash -= signed * px
 
