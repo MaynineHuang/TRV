@@ -51,6 +51,12 @@ services:
       HEDGER_SENDER: ${HEDGER_SENDER:-HEDGE001}
       TAKER_FEED: AAH6
       TAKER_RUN: "86400"
+      QUOTER_FEED: ${QUOTER_FEED:-AAH6}
+      QUOTER_CLIP: ${QUOTER_CLIP:-1}
+      QUOTER_MAX_POS: ${QUOTER_MAX_POS:-4}
+      QUOTER_HALF_SPREAD: ${QUOTER_HALF_SPREAD:-2}
+      QUOTER_REQUOTE_TICKS: ${QUOTER_REQUOTE_TICKS:-2}
+      QUOTER_MIN_REFRESH_MS: ${QUOTER_MIN_REFRESH_MS:-250}
     depends_on:
       - exchange
     restart: on-failure
@@ -76,3 +82,20 @@ services:
     restart: on-failure
     profiles:
       - strategy
+
+  # Development-only observation probe. It exits after PROBE_DURATION seconds;
+  # use --profile probe and --abort-on-container-exit to capture a bounded run.
+  probe:
+    build: ./probes
+    environment:
+      NATS_URL: nats://nats:4222
+      PROBE_FEED: AAH6
+      PROBE_DURATION: ${PROBE_DURATION:-20}
+      PROBE_ACTIVE: ${PROBE_ACTIVE:-0}
+      PROBE_SENDER: ${PROBE_SENDER:-PROBE001}
+      PROBE_COUNTERPARTY: ${PROBE_COUNTERPARTY:-PROBE002}
+      PROBE_RESTING_TEST: ${PROBE_RESTING_TEST:-0}
+    depends_on:
+      - exchange
+    profiles:
+      - probe
