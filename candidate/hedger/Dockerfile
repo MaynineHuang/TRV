@@ -10,5 +10,9 @@
 # Any language. Python is allowed for the hedger.
 #
 # Placeholder so `docker compose --profile strategy up` works before you start:
-FROM alpine
-CMD ["sh", "-c", "echo 'Put your hedger in ./hedger/ and replace this Dockerfile.'; sleep infinity"]
+FROM python:3.12-slim
+RUN pip install --no-cache-dir nats-py
+WORKDIR /app
+COPY hedger.py .
+ENV NATS_URL=nats://nats:4222
+CMD ["python", "hedger.py"]
