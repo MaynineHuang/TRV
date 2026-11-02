@@ -82,6 +82,9 @@ class Taker:
             oid = self.next_oid()
             order = f"{SENDER} A {FEED} {oid} {side} {CLIP} {px} F"
             try:
+                # Order entry is namespaced by sender.  Using the bare
+                # ``ex.req`` subject silently times out because no exchange
+                # subscriber owns it (see PROTOCOL.md).
                 reply = await self.nc.request(f"ex.req.{SENDER}", order.encode(), timeout=1.0)
             except Exception:
                 return  # timed out; treat as no fill
@@ -96,6 +99,7 @@ class Taker:
                 filled = CLIP
                 self.apply_fill(side, filled, px)
                 self.fills += 1
+                await self.publish_fill(side, filled, px)
 
     def apply_fill(self, side, qty, px):
         signed = qty if side == "B" else -qty
@@ -105,6 +109,11 @@ class Taker:
     def pnl(self):
         m = self.mid()
         return self.cash + (self.position * m if m is not None else 0)
+
+    async def publish_fill(self, side, qty, px):
+        payload = (f"feed={FEED} match=request-{self.fills} order={SENDER} "
+                   f"side={side} qty={qty} price={px} pos={self.position} role=incoming")
+        await self.nc.publish(f"desk.{SENDER}.fill", payload.encode())
 
     async def publish_status(self):
         s = (f"pos={self.position} cash={self.cash:.0f} "
