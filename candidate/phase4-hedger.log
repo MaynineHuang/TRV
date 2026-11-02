@@ -1,0 +1,1524 @@
+docker :  Image candidate-sim Building 
+所在位置 行:1 字符: 1
++ docker compose --profile sim --profile strategy up --build 2>&1 | Tee ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Image candidate-sim Building :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ Image candidate-taker Building 
+ Image candidate-strategy Building 
+ Image candidate-hedger Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.23kB 0.0s done
+#1 DONE 0.0s
+
+#2 [hedger internal] load build definition from Dockerfile
+#2 transferring dockerfile: 741B done
+#2 DONE 0.0s
+
+#3 [taker internal] load build definition from Dockerfile
+#3 transferring dockerfile: 186B done
+#3 DONE 0.0s
+
+#4 [sim internal] load build definition from Dockerfile
+#4 transferring dockerfile: 188B done
+#4 DONE 0.0s
+
+#5 [strategy internal] load build definition from Dockerfile
+#5 transferring dockerfile: 1.38kB done
+#5 DONE 0.0s
+
+#6 [sim internal] load metadata for docker.io/library/python:3.12-slim
+#6 ...
+
+#7 [auth] library/debian:pull token for registry-1.docker.io
+#7 DONE 0.0s
+
+#8 [auth] library/golang:pull token for registry-1.docker.io
+#8 DONE 0.0s
+
+#9 [auth] library/python:pull token for registry-1.docker.io
+#9 DONE 0.0s
+
+#10 [strategy internal] load metadata for docker.io/library/debian:bookworm-slim
+#10 DONE 1.7s
+
+#11 [strategy internal] load metadata for docker.io/library/golang:1.24-bookworm
+#11 DONE 1.8s
+
+#6 [taker internal] load metadata for docker.io/library/python:3.12-slim
+#6 DONE 1.8s
+
+#12 [hedger internal] load .dockerignore
+#12 transferring context: 2B done
+#12 DONE 0.0s
+
+#13 [taker internal] load .dockerignore
+#13 transferring context: 2B done
+#13 DONE 0.0s
+
+#14 [sim internal] load .dockerignore
+#14 transferring context: 2B done
+#14 DONE 0.0s
+
+#15 [strategy internal] load .dockerignore
+#15 transferring context: 2B done
+#15 DONE 0.0s
+
+#16 [strategy internal] load build context
+#16 DONE 0.0s
+
+#17 [taker internal] load build context
+#17 transferring context: 5.69kB done
+#17 DONE 0.0s
+
+#18 [sim internal] load build context
+#18 transferring context: 31B done
+#18 DONE 0.0s
+
+#19 [hedger 1/4] FROM docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+#19 resolve docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea 0.1s done
+#19 DONE 0.1s
+
+#20 [taker 2/4] RUN pip install --no-cache-dir nats-py
+#20 CACHED
+
+#21 [taker 3/4] WORKDIR /app
+#21 CACHED
+
+#22 [hedger internal] load build context
+#22 transferring context: 1.82kB done
+#22 DONE 0.1s
+
+#20 [hedger 2/4] RUN pip install --no-cache-dir nats-py
+#20 CACHED
+
+#23 [sim 3/4] WORKDIR /sim
+#23 CACHED
+
+#21 [hedger 3/4] WORKDIR /app
+#21 CACHED
+
+#24 [sim 4/4] COPY market.py .
+#24 CACHED
+
+#25 [strategy build 1/8] FROM docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
+#25 resolve docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac 0.0s done
+#25 DONE 0.1s
+
+#26 [strategy stage-1 1/2] FROM docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+#26 resolve docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171 0.1s done
+#26 DONE 0.1s
+
+#16 [strategy internal] load build context
+#16 transferring context: 145B done
+#16 DONE 0.0s
+
+#27 [strategy build 3/8] COPY go.mod ./
+#27 CACHED
+
+#28 [strategy build 4/8] RUN go mod download
+#28 CACHED
+
+#29 [strategy build 5/8] COPY . .
+#29 CACHED
+
+#30 [strategy build 2/8] WORKDIR /src
+#30 CACHED
+
+#31 [strategy build 7/8] RUN go test ./...
+#31 CACHED
+
+#32 [strategy build 8/8] RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o /out/quoter .
+#32 CACHED
+
+#33 [strategy build 6/8] RUN go mod tidy
+#33 CACHED
+
+#34 [strategy stage-1 2/2] COPY --from=build /out/quoter /usr/local/bin/quoter
+#34 CACHED
+
+#35 [taker 4/4] COPY taker.py .
+#35 DONE 0.1s
+
+#36 [hedger 4/4] COPY hedger.py .
+#36 DONE 0.1s
+
+#37 [strategy] exporting to image
+#37 exporting layers done
+#37 exporting manifest sha256:6f2b0f556408332d53f2d80059c352a6c659855b3ee4e86d07904b03bee2bbb6 done
+#37 exporting config sha256:79e0af8e424c0adc5348feedabf275bc657ae2078030082b2f357da0598bab43 0.0s done
+#37 exporting attestation manifest sha256:9d40bf60c400baba711b8cd205df5a4446f3f556a63a396e369bd51a08f0a1a0
+#37 exporting attestation manifest sha256:9d40bf60c400baba711b8cd205df5a4446f3f556a63a396e369bd51a08f0a1a0 0.0s done
+#37 exporting manifest list sha256:f8f1bff5a1b498f18c9405f5c6b1094fa79661c707581bf826566e942c6b0a5f 0.0s done
+#37 naming to docker.io/library/candidate-strategy:latest done
+#37 unpacking to docker.io/library/candidate-strategy:latest 0.0s done
+#37 DONE 0.2s
+
+#38 [sim] exporting to image
+#38 exporting layers done
+#38 exporting manifest sha256:ae00db0d1d91499e3c6d5cbba4b854eece199d66d83599c9864aac032eae1691 0.0s done
+#38 exporting config sha256:338566379e19ab7d431fe85c812ff8262aeb65c6500f241dee2bbfe65f73bad9 done
+#38 exporting attestation manifest sha256:dc30782a8eb83d264332bb9fb6dcce64e0c0d78cc846afca9df2b1c8369c07fd 0.0s done
+#38 exporting manifest list sha256:5a8f225bcdfa6ca80dcf7b1fb095a2bb6d7c6dd89c1559d115a919c10ec2db44 0.0s done
+#38 naming to docker.io/library/candidate-sim:latest 0.0s done
+#38 unpacking to docker.io/library/candidate-sim:latest 0.0s done
+#38 DONE 0.2s
+
+#39 [hedger] exporting to image
+#39 exporting layers 0.2s done
+#39 exporting manifest sha256:5fbc8f90cbd40c5b56db08d6163f3e418c6aabf880768cca699f3d999d8f7432 0.0s done
+#39 exporting config sha256:99362e17cb543d17df343439898fb70cfd434a4ea6aaa3f26091340f653414bc 0.0s done
+#39 exporting attestation manifest sha256:d78a55eb4c8b91e474b05ae5a6c1051f537d0073bd8dbefbac3f70b260692174
+#39 exporting attestation manifest sha256:d78a55eb4c8b91e474b05ae5a6c1051f537d0073bd8dbefbac3f70b260692174 0.0s done
+#39 exporting manifest list sha256:b54db597f1605bacda3a5e60fb22dbee1d5a677d1656e6f5a27cd7f327e763be 0.0s done
+#39 naming to docker.io/library/candidate-hedger:latest done
+#39 unpacking to docker.io/library/candidate-hedger:latest 0.1s done
+#39 DONE 0.5s
+
+#40 [sim] resolving provenance for metadata file
+#40 DONE 0.0s
+
+#41 [strategy] resolving provenance for metadata file
+#41 DONE 0.0s
+
+#42 [taker] exporting to image
+#42 exporting layers 0.3s done
+#42 exporting manifest sha256:47d45969218b08df374236750fc554f246b872f9418a6da1fe992c1204e959b1 0.0s done
+#42 exporting config sha256:eed29178a88f84dc372413a74e63df424ec47cee08490bd59893fac7a5b97783 0.0s done
+#42 exporting attestation manifest sha256:2f64aa666f14f10de91454687a4995183cb7e2897567ebd182c6dfa92442b8b9 0.0s done
+#42 exporting manifest list sha256:158813265c690e89082c1c3bf9155fcc163dd8c558d771ae009c1225b676cdfd 0.0s done
+#42 naming to docker.io/library/candidate-taker:latest done
+#42 unpacking to docker.io/library/candidate-taker:latest 0.0s done
+#42 DONE 0.5s
+
+#43 [taker] resolving provenance for metadata file
+#43 DONE 0.1s
+
+#44 [hedger] resolving provenance for metadata file
+#44 DONE 0.0s
+ Image candidate-strategy Built 
+ Image candidate-taker Built 
+ Image candidate-hedger Built 
+ Image candidate-sim Built 
+ Container candidate-sim-1 Running 
+ Container candidate-strategy-1 Running 
+ Container candidate-hedger-1 Recreate 
+ Container candidate-taker-1 Recreate 
+ Container candidate-hedger-1 Recreated 
+ Container candidate-taker-1 Recreated 
+Attaching to exchange-1, hedger-1, nats-1, sim-1, strategy-1, taker-1
+ Container candidate-nats-1 Starting 
+ Container candidate-nats-1 Started 
+ Container candidate-exchange-1 Starting 
+nats-1  | [1] 2026/09/07 03:17:19.758090 [INF] Starting nats-server
+nats-1  | [1] 2026/09/07 03:17:19.758159 [INF]   Version:  2.14.6
+nats-1  | [1] 2026/09/07 03:17:19.758162 [INF]   Git:      [1aa10f9]
+nats-1  | [1] 2026/09/07 03:17:19.758164 [INF]   Name:     NDISW5YPT264R2T7HJJQEMK4EW2DYMLMVV65ZKJAYCYRQ457LLRRETAR
+nats-1  | [1] 2026/09/07 03:17:19.758171 [INF]   Node:     SS0HID3Q
+nats-1  | [1] 2026/09/07 03:17:19.758172 [INF]   ID:       NDISW5YPT264R2T7HJJQEMK4EW2DYMLMVV65ZKJAYCYRQ457LLRRETAR
+nats-1  | [1] 2026/09/07 03:17:19.758493 [INF] Starting JetStream
+nats-1  | [1] 2026/09/07 03:17:19.758540 [WRN] Temporary storage directory used, data could be lost on system reboot
+nats-1  | [1] 2026/09/07 03:17:19.758887 [INF]     _ ___ _____ ___ _____ ___ ___   _   __  __
+nats-1  | [1] 2026/09/07 03:17:19.758909 [INF]  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  |
+nats-1  | [1] 2026/09/07 03:17:19.758911 [INF] | || | _|  | | \__ \ | | |   / _| / _ \| |\/| |
+nats-1  | [1] 2026/09/07 03:17:19.758912 [INF]  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_|
+nats-1  | [1] 2026/09/07 03:17:19.758913 [INF] 
+nats-1  | [1] 2026/09/07 03:17:19.758915 [INF]          https://docs.nats.io/jetstream
+nats-1  | [1] 2026/09/07 03:17:19.758916 [INF] 
+nats-1  | [1] 2026/09/07 03:17:19.758917 [INF] ---------------- JETSTREAM ----------------
+nats-1  | [1] 2026/09/07 03:17:19.758919 [INF]   Strict:          true
+nats-1  | [1] 2026/09/07 03:17:19.758924 [INF]   Max Memory:      5.71 GB
+nats-1  | [1] 2026/09/07 03:17:19.758926 [INF]   Max Storage:     714.10 GB
+nats-1  | [1] 2026/09/07 03:17:19.758928 [INF]   Store Directory: "/tmp/nats/jetstream"
+nats-1  | [1] 2026/09/07 03:17:19.758930 [INF]   API Level:       4
+nats-1  | [1] 2026/09/07 03:17:19.758931 [INF] -------------------------------------------
+nats-1  | [1] 2026/09/07 03:17:19.760446 [INF]   Starting restore for stream '$G > KV_EX_META'
+nats-1  | [1] 2026/09/07 03:17:19.761679 [INF]   Restored 3 messages for stream '$G > KV_EX_META' in 1ms
+nats-1  | [1] 2026/09/07 03:17:19.761825 [INF] Took 3.291848ms to start JetStream
+nats-1  | [1] 2026/09/07 03:17:19.764740 [INF] Listening for client connections on 0.0.0.0:4222
+nats-1  | [1] 2026/09/07 03:17:19.764951 [INF] Server is ready
+ Container candidate-exchange-1 Started 
+ Container candidate-hedger-1 Starting 
+ Container candidate-taker-1 Starting 
+exchange-1  | exchange: loaded instruments from /instruments.txt
+exchange-1  | exchange: 1 shard(s), NATS=nats://nats:4222
+exchange-1  | exchange: listening on 'ex.req.>'
+ Container candidate-hedger-1 Started 
+ Container candidate-taker-1 Started 
+strategy-1  | 2026/09/07 03:17:20 waiting for NATS: dial tcp: lookup nats: i/o timeout
+hedger-1    | [hedger] watching PYTKR001,QUOTE001
+taker-1     | [taker] PYTKR001 trading AAH6 clip=3 thresh=10 for 86400.0s
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+strategy-1  | 2026/09/07 03:17:20 STP EXCHANGE Y 0
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+strategy-1  | 2026/09/07 03:17:20 quoter sender=QUOTE001 feed=AAH6 clip=1 max_pos=4
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+strategy-1  | 2026/09/07 03:17:21 add Q4262078 B 598 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:21 add Q4262079 S 602 EXCHANGE Y 0
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+strategy-1  | 2026/09/07 03:17:21 status pos=0 bid=599 ask=601 live=2
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+strategy-1  | 2026/09/07 03:17:22 status pos=0 bid=599 ask=601 live=2
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+strategy-1  | 2026/09/07 03:17:23 status pos=0 bid=599 ask=601 live=2
+strategy-1  | 2026/09/07 03:17:24 fill feed=AAH6 match=9 order=QUOTE001:Q4262078 side=B qty=1 price=598 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:24 cancel Q4262078 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:24 cancel Q4262079 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:24 add Q4262080 S 541 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:24 fill feed=AAH6 match=40 order=QUOTE001:Q4262080 side=S qty=1 price=541 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=-15 cash=8070 pnl=15 fills=5
+strategy-1  | 2026/09/07 03:17:24 cancel Q4262080 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:24 add Q4262081 B 535 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:24 add Q4262082 S 539 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:24 fill feed=AAH6 match=54 order=QUOTE001:Q4262082 side=S qty=1 price=539 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:24 status pos=-1 bid=543 ask=553 live=2
+strategy-1  | 2026/09/07 03:17:24 cancel Q4262081 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:24 cancel Q4262082 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:24 add Q4262083 B 546 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:24 fill feed=AAH6 match=65 order=QUOTE001:Q4262083 side=B qty=1 price=546 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:25 cancel Q4262083 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:25 add Q4262084 B 536 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:25 add Q4262085 S 540 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:25 fill feed=AAH6 match=84 order=QUOTE001:Q4262085 side=S qty=1 price=540 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=-15 cash=8070 pnl=-38 fills=5
+strategy-1  | 2026/09/07 03:17:25 cancel Q4262084 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:25 cancel Q4262085 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:25 add Q4262086 B 545 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:25 fill feed=AAH6 match=90 order=QUOTE001:Q4262086 side=B qty=1 price=545 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:25 cancel Q4262086 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:25 add Q4262087 B 547 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:25 add Q4262088 S 551 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:25 status pos=0 bid=547 ask=551 live=2
+strategy-1  | 2026/09/07 03:17:25 fill feed=AAH6 match=101 order=QUOTE001:Q4262087 side=B qty=1 price=547 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:25 cancel Q4262087 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:25 cancel Q4262088 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:25 add Q4262089 S 548 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:26 fill feed=AAH6 match=116 order=QUOTE001:Q4262089 side=S qty=1 price=548 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:26 cancel Q4262089 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:26 add Q4262090 B 536 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:26 add Q4262091 S 540 EXCHANGE Y 0
+taker-1     | [taker] pos=-15 cash=8070 pnl=0 fills=5
+strategy-1  | 2026/09/07 03:17:26 fill feed=AAH6 match=126 order=QUOTE001:Q4262091 side=S qty=1 price=540 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:26 cancel Q4262090 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:26 cancel Q4262091 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:26 add Q4262092 B 538 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:26 status pos=-1 bid=538 ask=543 live=1
+strategy-1  | 2026/09/07 03:17:26 cancel Q4262092 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:26 add Q4262093 B 546 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:26 fill feed=AAH6 match=138 order=QUOTE001:Q4262093 side=B qty=1 price=546 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:27 cancel Q4262093 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:27 add Q4262094 B 538 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:27 add Q4262095 S 542 EXCHANGE Y 0
+taker-1     | [taker] pos=-15 cash=8070 pnl=-30 fills=5
+strategy-1  | 2026/09/07 03:17:27 fill feed=AAH6 match=157 order=QUOTE001:Q4262095 side=S qty=1 price=542 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:27 cancel Q4262094 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:27 cancel Q4262095 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:27 add Q4262096 B 546 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:27 fill feed=AAH6 match=161 order=QUOTE001:Q4262096 side=B qty=1 price=546 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:27 status pos=0 bid=534 ask=543 live=1
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:27 cancel Q4262096 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:27 add Q4262097 B 502 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:27 fill feed=AAH6 match=194 order=QUOTE001:Q4262097 side=B qty=1 price=502 pos=1 role=resting
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=1
+strategy-1  | 2026/09/07 03:17:27 add Q4262098 S 506 EXCHANGE Y 0
+hedger-1    | [hedger] before=-2 side=B qty=2 reply=EXCHANGE Y 2 after=0
+strategy-1  | 2026/09/07 03:17:27 fill feed=AAH6 match=196 order=QUOTE001:Q4262098 side=S qty=1 price=506 pos=0 role=resting
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=-1
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:28 cancel Q4262097 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:28 cancel Q4262098 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:28 add Q4262099 B 500 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:28 add Q4262100 S 504 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:28 fill feed=AAH6 match=210 order=QUOTE001:Q4262100 side=S qty=1 price=504 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=-30 cash=15600 pnl=240 fills=10
+strategy-1  | 2026/09/07 03:17:28 cancel Q4262099 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:28 cancel Q4262100 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:28 add Q4262101 B 510 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:28 fill feed=AAH6 match=222 order=QUOTE001:Q4262101 side=B qty=1 price=510 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:28 cancel Q4262101 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:28 add Q4262102 B 500 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:28 add Q4262103 S 504 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:28 status pos=0 bid=500 ask=504 live=2
+strategy-1  | 2026/09/07 03:17:28 fill feed=AAH6 match=236 order=QUOTE001:Q4262103 side=S qty=1 price=504 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:28 cancel Q4262102 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:28 cancel Q4262103 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:28 add Q4262104 B 502 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:29 cancel Q4262104 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:29 add Q4262105 B 510 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=15600 pnl=165 fills=10
+strategy-1  | 2026/09/07 03:17:29 fill feed=AAH6 match=244 order=QUOTE001:Q4262105 side=B qty=1 price=510 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:29 cancel Q4262105 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:29 add Q4262106 B 500 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:29 add Q4262107 S 504 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:29 fill feed=AAH6 match=257 order=QUOTE001:Q4262107 side=S qty=1 price=504 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:29 status pos=-1 bid=500 ask=509 live=2
+strategy-1  | 2026/09/07 03:17:29 cancel Q4262106 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:29 cancel Q4262107 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:29 add Q4262108 B 512 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:29 fill feed=AAH6 match=273 order=QUOTE001:Q4262108 side=B qty=1 price=512 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 0 after=0
+strategy-1  | 2026/09/07 03:17:30 cancel Q4262108 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:30 add Q4262109 B 500 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:30 add Q4262110 S 504 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:30 fill feed=AAH6 match=301 order=QUOTE001:Q4262110 side=S qty=1 price=504 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=-30 cash=15600 pnl=255 fills=10
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 2 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:30 cancel Q4262109 EXCHANGE Y 1
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:30 cancel Q4262110 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:30 fill feed=AAH6 match=451 order=QUOTE001:Q4262111 side=B qty=1 price=554 pos=0 role=incoming
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=1
+strategy-1  | 2026/09/07 03:17:30 add Q4262111 B 554 EXCHANGE Y 1
+hedger-1    | [hedger] before=-2 side=B qty=2 reply=EXCHANGE Y 2 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 1 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:30 status pos=0 bid=533 ask=570 live=1
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:30 cancel Q4262111 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:30 add Q4262112 B 545 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:30 add Q4262113 S 550 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:30 fill feed=AAH6 match=725 order=QUOTE001:Q4262112 side=B qty=1 price=545 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:31 cancel Q4262112 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:31 cancel Q4262113 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:31 add Q4262114 S 547 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=6912 pnl=-9153 fills=144
+strategy-1  | 2026/09/07 03:17:31 cancel Q4262114 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:31 add Q4262115 S 538 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:31 fill feed=AAH6 match=747 order=QUOTE001:Q4262115 side=S qty=1 price=538 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:31 add Q4262116 B 533 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:31 status pos=0 bid=533 ask=540 live=2
+strategy-1  | 2026/09/07 03:17:31 cancel Q4262116 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:31 cancel Q4262115 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:31 add Q4262117 B 543 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:31 add Q4262118 S 547 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:32 fill feed=AAH6 match=767 order=QUOTE001:Q4262117 side=B qty=1 price=543 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:32 fill feed=AAH6 match=772 order=QUOTE001:Q4262118 side=S qty=1 price=547 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:32 cancel Q4262117 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:32 cancel Q4262118 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:32 add Q4262119 B 533 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:32 add Q4262120 S 538 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=6912 pnl=-9153 fills=144
+strategy-1  | 2026/09/07 03:17:32 fill feed=AAH6 match=776 order=QUOTE001:Q4262120 side=S qty=1 price=538 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:32 cancel Q4262119 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:32 cancel Q4262120 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:32 add Q4262121 B 536 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:32 status pos=-1 bid=536 ask=545 live=1
+strategy-1  | 2026/09/07 03:17:32 cancel Q4262121 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:32 add Q4262122 B 538 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:33 fill feed=AAH6 match=787 order=QUOTE001:Q4262122 side=B qty=1 price=538 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 0 after=0
+strategy-1  | 2026/09/07 03:17:33 cancel Q4262122 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:33 add Q4262123 B 487 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:33 add Q4262124 S 492 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:33 fill feed=AAH6 match=807 order=QUOTE001:Q4262124 side=S qty=1 price=492 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=-30 cash=6912 pnl=-7803 fills=144
+strategy-1  | 2026/09/07 03:17:33 cancel Q4262123 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:33 cancel Q4262124 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:33 add Q4262125 B 495 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:33 fill feed=AAH6 match=812 order=QUOTE001:Q4262125 side=B qty=1 price=495 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:33 status pos=0 bid=494 ask=504 live=1
+strategy-1  | 2026/09/07 03:17:33 cancel Q4262125 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:33 add Q4262126 B 497 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:33 add Q4262127 S 501 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:33 fill feed=AAH6 match=819 order=QUOTE001:Q4262126 side=B qty=1 price=497 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:34 cancel Q4262126 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:34 cancel Q4262127 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:34 add Q4262128 S 499 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=6912 pnl=-7773 fills=144
+strategy-1  | 2026/09/07 03:17:34 cancel Q4262128 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:34 add Q4262129 S 492 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:34 fill feed=AAH6 match=832 order=QUOTE001:Q4262129 side=S qty=1 price=492 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:34 add Q4262130 B 489 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:34 status pos=0 bid=489 ask=494 live=2
+strategy-1  | 2026/09/07 03:17:34 cancel Q4262130 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:34 cancel Q4262129 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:34 add Q4262131 B 496 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:34 add Q4262132 S 501 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:35 fill feed=AAH6 match=845 order=QUOTE001:Q4262132 side=S qty=1 price=501 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:35 fill feed=AAH6 match=849 order=QUOTE001:Q4262131 side=B qty=1 price=496 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:35 cancel Q4262131 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:35 cancel Q4262132 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:35 add Q4262133 B 493 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:35 add Q4262134 S 497 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=6912 pnl=-7953 fills=144
+strategy-1  | 2026/09/07 03:17:35 status pos=0 bid=494 ask=497 live=2
+strategy-1  | 2026/09/07 03:17:35 fill feed=AAH6 match=868 order=QUOTE001:Q4262134 side=S qty=1 price=497 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:35 cancel Q4262133 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:35 cancel Q4262134 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:35 add Q4262135 B 496 EXCHANGE Y 0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:36 cancel Q4262135 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:36 add Q4262136 B 524 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:36 fill feed=AAH6 match=909 order=QUOTE001:Q4262136 side=B qty=1 price=524 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=-15 cash=-978 pnl=-8718 fills=149
+strategy-1  | 2026/09/07 03:17:36 cancel Q4262136 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:36 add Q4262137 B 514 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:36 add Q4262138 S 518 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:36 fill feed=AAH6 match=928 order=QUOTE001:Q4262138 side=S qty=1 price=518 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:36 cancel Q4262137 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:36 cancel Q4262138 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:36 add Q4262139 B 517 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:36 status pos=-1 bid=517 ask=524 live=1
+strategy-1  | 2026/09/07 03:17:36 cancel Q4262139 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:36 add Q4262140 B 520 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:37 cancel Q4262140 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:37 add Q4262141 B 518 EXCHANGE Y 0
+taker-1     | [taker] pos=-15 cash=-978 pnl=-8770 fills=149
+strategy-1  | 2026/09/07 03:17:37 status pos=-1 bid=518 ask=521 live=1
+taker-1     | [taker] pos=-15 cash=-978 pnl=-8770 fills=149
+strategy-1  | 2026/09/07 03:17:38 status pos=-1 bid=518 ask=521 live=1
+taker-1     | [taker] pos=-15 cash=-978 pnl=-8770 fills=149
+strategy-1  | 2026/09/07 03:17:39 status pos=-1 bid=518 ask=521 live=1
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:39 cancel Q4262141 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:39 add Q4262142 B 642 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:39 fill feed=AAH6 match=1011 order=QUOTE001:Q4262142 side=B qty=1 price=642 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:40 add Q4262143 S 647 EXCHANGE Y 0
+taker-1     | [taker] pos=0 cash=-10638 pnl=-10638 fills=154
+strategy-1  | 2026/09/07 03:17:40 cancel Q4262142 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:40 cancel Q4262143 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:40 add Q4262144 B 633 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:40 add Q4262145 S 637 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:40 fill feed=AAH6 match=1034 order=QUOTE001:Q4262145 side=S qty=1 price=637 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:40 cancel Q4262144 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:40 cancel Q4262145 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:40 add Q4262146 B 636 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:40 status pos=-1 bid=636 ask=643 live=1
+strategy-1  | 2026/09/07 03:17:40 fill feed=AAH6 match=1039 order=QUOTE001:Q4262146 side=B qty=1 price=636 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:40 cancel Q4262146 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:40 add Q4262147 B 633 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:40 add Q4262148 S 637 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:41 fill feed=AAH6 match=1047 order=QUOTE001:Q4262148 side=S qty=1 price=637 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:41 cancel Q4262147 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:41 cancel Q4262148 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:41 add Q4262149 B 636 EXCHANGE Y 0
+taker-1     | [taker] pos=0 cash=-10638 pnl=-10638 fills=154
+strategy-1  | 2026/09/07 03:17:41 cancel Q4262149 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:41 add Q4262150 B 638 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:41 status pos=-1 bid=638 ask=647 live=1
+strategy-1  | 2026/09/07 03:17:41 cancel Q4262150 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:41 add Q4262151 B 636 EXCHANGE Y 0
+taker-1     | [taker] pos=0 cash=-10638 pnl=-10638 fills=154
+strategy-1  | 2026/09/07 03:17:42 status pos=-1 bid=636 ask=639 live=1
+taker-1     | [taker] pos=0 cash=-10638 pnl=-10638 fills=154
+strategy-1  | 2026/09/07 03:17:43 status pos=-1 bid=636 ask=639 live=1
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:43 cancel Q4262151 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:43 add Q4262152 B 697 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:43 fill feed=AAH6 match=1105 order=QUOTE001:Q4262152 side=B qty=1 price=697 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:44 add Q4262153 S 700 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:44 fill feed=AAH6 match=1112 order=QUOTE001:Q4262153 side=S qty=1 price=700 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=15 cash=-21153 pnl=-10698 fills=159
+strategy-1  | 2026/09/07 03:17:44 cancel Q4262152 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:44 cancel Q4262153 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:44 add Q4262154 B 695 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:44 cancel Q4262154 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:44 add Q4262155 B 693 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:44 status pos=-1 bid=693 ask=696 live=1
+strategy-1  | 2026/09/07 03:17:45 fill feed=AAH6 match=1124 order=QUOTE001:Q4262155 side=B qty=1 price=693 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:45 cancel Q4262155 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:45 add Q4262156 B 689 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:45 add Q4262157 S 694 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:45 fill feed=AAH6 match=1128 order=QUOTE001:Q4262157 side=S qty=1 price=694 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=15 cash=-21153 pnl=-10750 fills=159
+strategy-1  | 2026/09/07 03:17:45 cancel Q4262156 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:45 cancel Q4262157 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:45 add Q4262158 B 698 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:45 status pos=-1 bid=698 ask=705 live=1
+strategy-1  | 2026/09/07 03:17:45 fill feed=AAH6 match=1135 order=QUOTE001:Q4262158 side=B qty=1 price=698 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:45 add Q4262159 S 704 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:46 cancel Q4262158 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:46 cancel Q4262159 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:46 add Q4262160 B 695 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:46 add Q4262161 S 700 EXCHANGE Y 0
+taker-1     | [taker] pos=15 cash=-21153 pnl=-10690 fills=159
+strategy-1  | 2026/09/07 03:17:46 fill feed=AAH6 match=1153 order=QUOTE001:Q4262160 side=B qty=1 price=695 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:46 cancel Q4262160 EXCHANGE N 305 orderid not active
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:46 cancel Q4262161 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:46 fill feed=AAH6 match=1214 order=QUOTE001:Q4262162 side=S qty=1 price=633 pos=0 role=incoming
+strategy-1  | 2026/09/07 03:17:46 add Q4262162 S 570 EXCHANGE Y 1
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=-1
+hedger-1    | [hedger] before=-4 side=B qty=4 reply=EXCHANGE Y 4 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:46 status pos=0 bid=638 ask=653 live=1
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:46 cancel Q4262162 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:46 add Q4262163 B 643 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:46 add Q4262164 S 648 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:46 fill feed=AAH6 match=1303 order=QUOTE001:Q4262164 side=S qty=1 price=648 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:46 fill feed=AAH6 match=1314 order=QUOTE001:Q4262163 side=B qty=1 price=643 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:47 cancel Q4262163 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:47 cancel Q4262164 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:47 add Q4262165 B 640 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:47 add Q4262166 S 645 EXCHANGE Y 0
+taker-1     | [taker] pos=-18 cash=-7785 pnl=-19368 fills=212
+strategy-1  | 2026/09/07 03:17:47 fill feed=AAH6 match=1344 order=QUOTE001:Q4262166 side=S qty=1 price=645 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:47 cancel Q4262165 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:47 cancel Q4262166 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:47 add Q4262167 B 643 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:47 status pos=-1 bid=643 ask=651 live=1
+strategy-1  | 2026/09/07 03:17:47 fill feed=AAH6 match=1348 order=QUOTE001:Q4262167 side=B qty=1 price=643 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:47 add Q4262168 S 648 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:48 cancel Q4262167 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:48 cancel Q4262168 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:48 add Q4262169 B 637 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:48 add Q4262170 S 641 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:48 fill feed=AAH6 match=1354 order=QUOTE001:Q4262170 side=S qty=1 price=641 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=-18 cash=-7785 pnl=-19359 fills=212
+strategy-1  | 2026/09/07 03:17:48 cancel Q4262169 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:48 cancel Q4262170 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:48 add Q4262171 B 644 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:48 fill feed=AAH6 match=1356 order=QUOTE001:Q4262171 side=B qty=1 price=644 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:48 status pos=0 bid=641 ask=642 live=1
+strategy-1  | 2026/09/07 03:17:48 cancel Q4262171 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:48 add Q4262172 B 639 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:48 add Q4262173 S 644 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:48 fill feed=AAH6 match=1361 order=QUOTE001:Q4262173 side=S qty=1 price=644 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:49 cancel Q4262172 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:49 cancel Q4262173 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:49 add Q4262174 B 642 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:49 fill feed=AAH6 match=1363 order=QUOTE001:Q4262174 side=B qty=1 price=642 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:49 cancel Q4262174 EXCHANGE N 305 orderid not active
+taker-1     | [taker] pos=-18 cash=-7785 pnl=-19260 fills=212
+strategy-1  | 2026/09/07 03:17:49 add Q4262175 B 635 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:49 add Q4262176 S 640 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:49 fill feed=AAH6 match=1365 order=QUOTE001:Q4262176 side=S qty=1 price=640 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:49 cancel Q4262176 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:49 status pos=-1 bid=635 ask=642 live=1
+strategy-1  | 2026/09/07 03:17:49 cancel Q4262175 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:49 add Q4262177 B 642 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:49 fill feed=AAH6 match=1378 order=QUOTE001:Q4262177 side=B qty=1 price=642 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:50 cancel Q4262177 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:50 add Q4262178 B 640 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:50 add Q4262179 S 645 EXCHANGE Y 0
+taker-1     | [taker] pos=-18 cash=-7785 pnl=-19368 fills=212
+strategy-1  | 2026/09/07 03:17:50 fill feed=AAH6 match=1389 order=QUOTE001:Q4262179 side=S qty=1 price=645 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:50 cancel Q4262179 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:50 status pos=-1 bid=640 ask=642 live=1
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:50 cancel Q4262178 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:50 add Q4262180 B 682 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:51 fill feed=AAH6 match=1422 order=QUOTE001:Q4262180 side=B qty=1 price=682 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:51 cancel Q4262180 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:51 add Q4262181 B 672 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:51 add Q4262182 S 676 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:51 fill feed=AAH6 match=1432 order=QUOTE001:Q4262181 side=B qty=1 price=672 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=-3 cash=-18045 pnl=-20062 fills=217
+strategy-1  | 2026/09/07 03:17:51 fill feed=AAH6 match=1435 order=QUOTE001:Q4262182 side=S qty=1 price=676 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:51 cancel Q4262181 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:51 cancel Q4262182 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:51 add Q4262183 B 681 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:51 add Q4262184 S 686 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:51 status pos=0 bid=681 ask=686 live=2
+strategy-1  | 2026/09/07 03:17:51 fill feed=AAH6 match=1449 order=QUOTE001:Q4262183 side=B qty=1 price=681 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:51 cancel Q4262183 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:51 cancel Q4262184 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:51 add Q4262185 S 677 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:52 fill feed=AAH6 match=1454 order=QUOTE001:Q4262185 side=S qty=1 price=677 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:52 cancel Q4262185 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:52 add Q4262186 B 677 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:52 add Q4262187 S 682 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:52 fill feed=AAH6 match=1463 order=QUOTE001:Q4262187 side=S qty=1 price=682 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+taker-1     | [taker] pos=-3 cash=-18045 pnl=-20091 fills=217
+strategy-1  | 2026/09/07 03:17:52 cancel Q4262186 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:52 cancel Q4262187 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:52 add Q4262188 B 680 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:52 fill feed=AAH6 match=1468 order=QUOTE001:Q4262188 side=B qty=1 price=680 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:52 status pos=0 bid=673 ask=679 live=1
+strategy-1  | 2026/09/07 03:17:52 add Q4262189 S 686 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:53 cancel Q4262188 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:53 cancel Q4262189 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:53 add Q4262190 B 676 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:53 add Q4262191 S 680 EXCHANGE Y 0
+taker-1     | [taker] pos=-3 cash=-18045 pnl=-20078 fills=217
+strategy-1  | 2026/09/07 03:17:53 status pos=0 bid=676 ask=679 live=2
+taker-1     | [taker] pos=-3 cash=-18045 pnl=-20078 fills=217
+strategy-1  | 2026/09/07 03:17:54 fill feed=AAH6 match=1483 order=QUOTE001:Q4262190 side=B qty=1 price=676 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:54 cancel Q4262190 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:54 cancel Q4262191 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:54 add Q4262192 S 619 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:54 fill feed=AAH6 match=1511 order=QUOTE001:Q4262192 side=S qty=1 price=619 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:54 status pos=0 bid=613 ask=619 live=1
+strategy-1  | 2026/09/07 03:17:54 add Q4262193 B 614 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:55 cancel Q4262193 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:55 add Q4262194 B 616 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:55 cancel Q4262194 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:55 cancel Q4262192 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:55 add Q4262195 B 620 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:55 add Q4262196 S 624 EXCHANGE Y 0
+taker-1     | [taker] pos=-18 cash=-8805 pnl=-20001 fills=222
+strategy-1  | 2026/09/07 03:17:55 status pos=0 bid=621 ask=624 live=2
+strategy-1  | 2026/09/07 03:17:55 fill feed=AAH6 match=1531 order=QUOTE001:Q4262196 side=S qty=1 price=624 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:55 cancel Q4262195 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:55 cancel Q4262196 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:55 add Q4262197 B 622 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:55 fill feed=AAH6 match=1533 order=QUOTE001:Q4262197 side=B qty=1 price=622 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:56 cancel Q4262197 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:56 add Q4262198 B 618 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:56 add Q4262199 S 622 EXCHANGE Y 0
+taker-1     | [taker] pos=-18 cash=-8805 pnl=-19956 fills=222
+strategy-1  | 2026/09/07 03:17:56 status pos=0 bid=618 ask=621 live=2
+strategy-1  | 2026/09/07 03:17:57 fill feed=AAH6 match=1552 order=QUOTE001:Q4262198 side=B qty=1 price=618 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:57 cancel Q4262198 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:57 cancel Q4262199 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:57 add Q4262200 S 619 EXCHANGE Y 0
+taker-1     | [taker] pos=-18 cash=-8805 pnl=-19875 fills=222
+strategy-1  | 2026/09/07 03:17:57 fill feed=AAH6 match=1556 order=QUOTE001:Q4262200 side=S qty=1 price=619 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:57 cancel Q4262200 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:57 add Q4262201 B 619 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:57 add Q4262202 S 624 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:57 status pos=0 bid=621 ask=622 live=2
+strategy-1  | 2026/09/07 03:17:58 fill feed=AAH6 match=1577 order=QUOTE001:Q4262201 side=B qty=1 price=619 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:17:58 cancel Q4262201 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:58 cancel Q4262202 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:58 add Q4262203 S 565 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:58 fill feed=AAH6 match=1611 order=QUOTE001:Q4262203 side=S qty=1 price=565 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:58 cancel Q4262203 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:58 add Q4262204 B 564 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:58 add Q4262205 S 569 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=-2073 pnl=-19068 fills=226
+strategy-1  | 2026/09/07 03:17:58 fill feed=AAH6 match=1622 order=QUOTE001:Q4262205 side=S qty=1 price=569 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:58 cancel Q4262205 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:58 status pos=-1 bid=564 ask=566 live=1
+taker-1     | [taker] pos=-30 cash=-2073 pnl=-19023 fills=226
+strategy-1  | 2026/09/07 03:17:59 fill feed=AAH6 match=1635 order=QUOTE001:Q4262204 side=B qty=1 price=564 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:59 cancel Q4262204 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:59 add Q4262206 B 561 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:59 add Q4262207 S 565 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:59 fill feed=AAH6 match=1642 order=QUOTE001:Q4262207 side=S qty=1 price=565 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:17:59 status pos=-1 bid=566 ask=568 live=2
+strategy-1  | 2026/09/07 03:17:59 cancel Q4262206 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:17:59 cancel Q4262207 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:17:59 add Q4262208 B 567 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:17:59 fill feed=AAH6 match=1646 order=QUOTE001:Q4262208 side=B qty=1 price=567 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:00 cancel Q4262208 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:00 add Q4262209 B 564 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:00 add Q4262210 S 569 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=-2073 pnl=-19098 fills=226
+strategy-1  | 2026/09/07 03:18:00 fill feed=AAH6 match=1654 order=QUOTE001:Q4262210 side=S qty=1 price=569 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:00 cancel Q4262210 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:00 status pos=-1 bid=564 ask=566 live=1
+strategy-1  | 2026/09/07 03:18:01 cancel Q4262209 EXCHANGE Y 1
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:18:01 add Q4262211 B 637 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:01 fill feed=AAH6 match=1677 order=QUOTE001:Q4262211 side=B qty=1 price=637 pos=0 role=resting
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=1
+hedger-1    | [hedger] before=4 side=S qty=4 reply=EXCHANGE Y 4 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:18:01 add Q4262212 S 640 EXCHANGE Y 0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+taker-1     | [taker] pos=-27 cash=-5394 pnl=-21500 fills=239
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:18:01 cancel Q4262211 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:01 cancel Q4262212 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:01 add Q4262213 B 598 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:01 add Q4262214 S 603 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:01 status pos=0 bid=599 ask=602 live=2
+strategy-1  | 2026/09/07 03:18:01 fill feed=AAH6 match=1754 order=QUOTE001:Q4262214 side=S qty=1 price=603 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:01 cancel Q4262213 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:01 cancel Q4262214 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:01 add Q4262215 B 602 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:02 fill feed=AAH6 match=1765 order=QUOTE001:Q4262215 side=B qty=1 price=602 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:02 add Q4262216 S 606 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=-3612 pnl=-21492 fills=240
+strategy-1  | 2026/09/07 03:18:02 cancel Q4262215 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:02 add Q4262217 B 600 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:02 status pos=0 bid=600 ask=606 live=2
+strategy-1  | 2026/09/07 03:18:02 fill feed=AAH6 match=1789 order=QUOTE001:Q4262217 side=B qty=1 price=600 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:02 cancel Q4262217 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:02 cancel Q4262216 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:02 add Q4262218 S 598 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:02 fill feed=AAH6 match=1798 order=QUOTE001:Q4262218 side=S qty=1 price=598 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:03 cancel Q4262218 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:03 add Q4262219 B 596 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:03 add Q4262220 S 600 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=-3612 pnl=-21552 fills=240
+strategy-1  | 2026/09/07 03:18:03 fill feed=AAH6 match=1806 order=QUOTE001:Q4262219 side=B qty=1 price=596 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:03 cancel Q4262219 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:03 cancel Q4262220 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:03 add Q4262221 S 598 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:03 status pos=1 bid=591 ask=598 live=1
+strategy-1  | 2026/09/07 03:18:03 fill feed=AAH6 match=1808 order=QUOTE001:Q4262221 side=S qty=1 price=598 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:03 cancel Q4262221 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:03 add Q4262222 B 601 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:03 add Q4262223 S 606 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:04 fill feed=AAH6 match=1820 order=QUOTE001:Q4262223 side=S qty=1 price=606 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:04 fill feed=AAH6 match=1823 order=QUOTE001:Q4262222 side=B qty=1 price=601 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:04 cancel Q4262222 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:04 cancel Q4262223 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:04 add Q4262224 B 596 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:04 add Q4262225 S 601 EXCHANGE Y 0
+taker-1     | [taker] pos=-30 cash=-3612 pnl=-21537 fills=240
+strategy-1  | 2026/09/07 03:18:04 status pos=0 bid=596 ask=599 live=2
+strategy-1  | 2026/09/07 03:18:04 fill feed=AAH6 match=1845 order=QUOTE001:Q4262225 side=S qty=1 price=601 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:18:04 cancel Q4262224 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:04 cancel Q4262225 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:04 add Q4262226 B 653 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:05 fill feed=AAH6 match=1878 order=QUOTE001:Q4262226 side=B qty=1 price=653 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:05 add Q4262227 S 658 EXCHANGE Y 0
+taker-1     | [taker] pos=-15 cash=-13452 pnl=-23150 fills=245
+strategy-1  | 2026/09/07 03:18:05 cancel Q4262226 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:05 cancel Q4262227 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:05 add Q4262228 B 648 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:05 add Q4262229 S 652 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:05 status pos=0 bid=648 ask=652 live=2
+strategy-1  | 2026/09/07 03:18:06 fill feed=AAH6 match=1902 order=QUOTE001:Q4262228 side=B qty=1 price=648 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:06 cancel Q4262228 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:06 cancel Q4262229 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:06 add Q4262230 S 650 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:06 fill feed=AAH6 match=1904 order=QUOTE001:Q4262230 side=S qty=1 price=650 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:06 cancel Q4262230 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:06 add Q4262231 B 650 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:06 add Q4262232 S 655 EXCHANGE Y 0
+taker-1     | [taker] pos=-15 cash=-13452 pnl=-23240 fills=245
+strategy-1  | 2026/09/07 03:18:06 status pos=0 bid=650 ask=655 live=2
+taker-1     | [taker] pos=-15 cash=-13452 pnl=-23240 fills=245
+strategy-1  | 2026/09/07 03:18:07 fill feed=AAH6 match=1938 order=QUOTE001:Q4262232 side=S qty=1 price=655 pos=-1 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:07 cancel Q4262231 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:07 cancel Q4262232 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:07 add Q4262233 B 652 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:07 status pos=-1 bid=652 ask=659 live=1
+strategy-1  | 2026/09/07 03:18:07 fill feed=AAH6 match=1942 order=QUOTE001:Q4262233 side=B qty=1 price=652 pos=0 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:07 add Q4262234 S 657 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:08 cancel Q4262233 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:08 cancel Q4262234 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:08 add Q4262235 B 648 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:08 add Q4262236 S 652 EXCHANGE Y 0
+taker-1     | [taker] pos=-15 cash=-13452 pnl=-23194 fills=245
+strategy-1  | 2026/09/07 03:18:08 fill feed=AAH6 match=1959 order=QUOTE001:Q4262235 side=B qty=1 price=648 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
+strategy-1  | 2026/09/07 03:18:08 cancel Q4262235 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:08 cancel Q4262236 EXCHANGE Y 1
+strategy-1  | 2026/09/07 03:18:08 add Q4262237 S 649 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:08 status pos=1 bid=643 ask=649 live=1
+strategy-1  | 2026/09/07 03:18:08 fill feed=AAH6 match=1963 order=QUOTE001:Q4262237 side=S qty=1 price=649 pos=0 role=resting
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:18:08 cancel Q4262237 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:08 add Q4262238 B 611 EXCHANGE Y 0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:18:08 fill feed=AAH6 match=2035 order=QUOTE001:Q4262238 side=B qty=1 price=611 pos=1 role=resting
+strategy-1  | 2026/09/07 03:18:08 add Q4262239 S 615 EXCHANGE Y 0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=1
+strategy-1  | 2026/09/07 03:18:08 fill feed=AAH6 match=2037 order=QUOTE001:Q4262239 side=S qty=1 price=615 pos=0 role=resting
+hedger-1    | [hedger] before=-2 side=B qty=2 reply=EXCHANGE Y 2 after=0
+hedger-1    | [hedger] before=-1 side=B qty=1 reply=EXCHANGE Y 1 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 0 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=-3 side=B qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+taker-1     | [taker] pos=-27 cash=-13476 pnl=-30000 fills=363
+strategy-1  | 2026/09/07 03:18:09 status pos=0 bid=607 ask=617 live=2
+taker-1     | [taker] pos=-27 cash=-13476 pnl=-30000 fills=363
+strategy-1  | 2026/09/07 03:18:10 status pos=0 bid=607 ask=617 live=2
+taker-1     | [taker] pos=-27 cash=-13476 pnl=-30027 fills=363
+strategy-1  | 2026/09/07 03:18:11 status pos=0 bid=608 ask=618 live=2
+taker-1     | [taker] pos=-27 cash=-13476 pnl=-30027 fills=363
+strategy-1  | 2026/09/07 03:18:12 status pos=0 bid=608 ask=618 live=2
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+hedger-1    | [hedger] before=3 side=S qty=3 reply=EXCHANGE Y 3 after=0
+strategy-1  | 2026/09/07 03:18:12 cancel Q4262238 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:12 cancel Q4262239 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 03:18:12 add Q4262240 B 635 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:12 add Q4262241 S 640 EXCHANGE Y 0
+strategy-1  | 2026/09/07 03:18:12 fill feed=AAH6 match=2421 order=QUOTE001:Q4262240 side=B qty=1 price=635 pos=1 role=resting
+hedger-1    | [hedger] before=1 side=S qty=1 reply=EXCHANGE Y 1 after=0
