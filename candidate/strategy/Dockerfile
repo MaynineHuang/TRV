@@ -29,5 +29,16 @@
 #   CMD ["/strategy"]
 #
 # Placeholder so `docker compose --profile strategy up` works before you start:
-FROM alpine
-CMD ["sh", "-c", "echo 'Put your strategy in ./strategy/ and replace this Dockerfile.'; sleep infinity"]
+FROM golang:1.24-bookworm AS build
+WORKDIR /src
+COPY go.mod ./
+RUN go mod download
+COPY . .
+RUN go mod tidy
+RUN go test ./...
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o /out/quoter .
+
+FROM debian:bookworm-slim
+COPY --from=build /out/quoter /usr/local/bin/quoter
+ENV NATS_URL=nats://nats:4222
+CMD ["/usr/local/bin/quoter"]
