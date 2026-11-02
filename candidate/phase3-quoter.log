@@ -1,0 +1,333 @@
+docker :  Image candidate-hedger Building 
+所在位置 行:1 字符: 1
++ docker compose --project-directory 'D:\Users\ASUS\Desktop\杂代码\TRV_Gen ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Image candidate-hedger Building :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ Image candidate-sim Building 
+ Image candidate-taker Building 
+ Image candidate-strategy Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.23kB 0.1s done
+#1 DONE 0.1s
+
+#2 [strategy internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.35kB 0.0s done
+#2 DONE 0.1s
+
+#3 [taker internal] load build definition from Dockerfile
+#3 transferring dockerfile: 186B 0.0s done
+#3 DONE 0.1s
+
+#4 [sim internal] load build definition from Dockerfile
+#4 transferring dockerfile: 188B 0.0s done
+#4 DONE 0.1s
+
+#5 [hedger internal] load build definition from Dockerfile
+#5 transferring dockerfile: 705B 0.0s done
+#5 DONE 0.1s
+
+#6 [sim internal] load metadata for docker.io/library/python:3.12-slim
+#6 ...
+
+#7 [auth] library/alpine:pull token for registry-1.docker.io
+#7 DONE 0.0s
+
+#8 [auth] library/python:pull token for registry-1.docker.io
+#8 DONE 0.0s
+
+#9 [auth] library/golang:pull token for registry-1.docker.io
+#9 DONE 0.0s
+
+#10 [auth] library/debian:pull token for registry-1.docker.io
+#10 DONE 0.0s
+
+#11 [hedger internal] load metadata for docker.io/library/alpine:latest
+#11 DONE 2.0s
+
+#12 [strategy internal] load metadata for docker.io/library/golang:1.24-bookworm
+#12 ...
+
+#6 [sim internal] load metadata for docker.io/library/python:3.12-slim
+#6 DONE 2.0s
+
+#13 [hedger internal] load .dockerignore
+#13 transferring context: 2B done
+#13 DONE 0.0s
+
+#14 [taker internal] load .dockerignore
+#14 transferring context: 2B done
+#14 DONE 0.0s
+
+#15 [sim internal] load .dockerignore
+#15 transferring context: 2B done
+#15 DONE 0.0s
+
+#16 [taker internal] load build context
+#16 transferring context: 30B 0.0s done
+#16 DONE 0.0s
+
+#17 [sim internal] load build context
+#17 transferring context: 31B done
+#17 DONE 0.0s
+
+#18 [sim 1/4] FROM docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+#18 resolve docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea 0.0s done
+#18 DONE 0.0s
+
+#19 [hedger 1/1] FROM docker.io/library/alpine:latest@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b
+#19 resolve docker.io/library/alpine:latest@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b 0.0s done
+#19 DONE 0.0s
+
+#20 [taker 2/4] RUN pip install --no-cache-dir nats-py
+#20 CACHED
+
+#21 [taker 3/4] WORKDIR /app
+#21 CACHED
+
+#22 [sim 3/4] WORKDIR /sim
+#22 CACHED
+
+#20 [sim 2/4] RUN pip install --no-cache-dir nats-py
+#20 CACHED
+
+#23 [sim 4/4] COPY market.py .
+#23 CACHED
+
+#24 [taker 4/4] COPY taker.py .
+#24 CACHED
+
+#19 [hedger 1/1] FROM docker.io/library/alpine:latest@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b
+#19 CACHED
+
+#25 [hedger] exporting to image
+#25 exporting layers done
+#25 exporting manifest sha256:4c815d53922f0f86b97a0ece97f507ae31aecbfd01524a276416932b780a5990 done
+#25 exporting config sha256:e289033e10735ce216a0d14a77e15b11cc2d41f6447d44f4768c6acf311db389 done
+#25 exporting attestation manifest sha256:16c48720954d3f9c9a772e68a74d11229e990a36c28aafdd16eba24e986007d5 0.1s done
+#25 exporting manifest list sha256:0e28350a2be3e166d76c9118e1f7639fecc7b032e30ebec7441b29cd4aade367
+#25 exporting manifest list sha256:0e28350a2be3e166d76c9118e1f7639fecc7b032e30ebec7441b29cd4aade367 0.1s done
+#25 naming to docker.io/library/candidate-hedger:latest 0.0s done
+#25 unpacking to docker.io/library/candidate-hedger:latest 0.0s done
+#25 DONE 0.3s
+
+#26 [taker] exporting to image
+#26 exporting layers done
+#26 exporting manifest sha256:561f6fd1cacbf3903abd7fcf40ebfbcebacda2c577478ecf60d4fb6656f33369 0.0s done
+#26 exporting config sha256:14a0d60d8a8bc5d9f507e20fefc144930f61e43d54eda67ef9e89f415c40f46d 0.0s done
+#26 exporting attestation manifest sha256:c2ae7c5ab9eafb1fb7a7f41d5e50844709178de69c20381f6a8351650a391820 0.1s done
+#26 exporting manifest list sha256:c547b32f06e6de2bd21d98364d098aac16dfeb0fdde6af0c49436b628ac49a32 0.0s done
+#26 naming to docker.io/library/candidate-taker:latest 0.0s done
+#26 unpacking to docker.io/library/candidate-taker:latest 0.0s done
+#26 DONE 0.3s
+
+#27 [sim] exporting to image
+#27 exporting layers done
+#27 exporting manifest sha256:ae00db0d1d91499e3c6d5cbba4b854eece199d66d83599c9864aac032eae1691 done
+#27 exporting config sha256:338566379e19ab7d431fe85c812ff8262aeb65c6500f241dee2bbfe65f73bad9 done
+#27 exporting attestation manifest sha256:093d78831598240b1bdb2f3ca3807411ccf248c2c1039b2cfa66f23051f07437 0.1s done
+#27 exporting manifest list sha256:b9b56131c610767cba330d2f56d54747aecf3594c002ba4dbef71dda6eca1e4b 0.1s done
+#27 naming to docker.io/library/candidate-sim:latest 0.0s done
+#27 unpacking to docker.io/library/candidate-sim:latest 0.0s done
+#27 DONE 0.3s
+
+#28 [strategy internal] load metadata for docker.io/library/debian:bookworm-slim
+#28 DONE 2.7s
+
+#12 [strategy internal] load metadata for docker.io/library/golang:1.24-bookworm
+#12 ...
+
+#29 [sim] resolving provenance for metadata file
+#29 DONE 0.1s
+
+#30 [taker] resolving provenance for metadata file
+#30 DONE 0.0s
+
+#31 [hedger] resolving provenance for metadata file
+#31 DONE 0.1s
+
+#12 [strategy internal] load metadata for docker.io/library/golang:1.24-bookworm
+#12 DONE 3.2s
+
+#32 [strategy internal] load .dockerignore
+#32 transferring context: 2B done
+#32 DONE 0.0s
+
+#33 [strategy stage-1 1/2] FROM docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+#33 resolve docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171 0.0s done
+#33 ...
+
+#34 [strategy internal] load build context
+#34 transferring context: 8.09kB done
+#34 DONE 0.1s
+
+#35 [strategy build 1/6] FROM docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
+#35 resolve docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac 0.0s done
+#35 DONE 0.2s
+
+#33 [strategy stage-1 1/2] FROM docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 0B / 28.23MB 0.3s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 2.10MB / 28.23MB 0.9s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 4.19MB / 28.23MB 1.2s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 6.29MB / 28.23MB 1.5s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 9.44MB / 28.23MB 2.0s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 11.53MB / 28.23MB 2.4s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 13.63MB / 28.23MB 3.0s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 15.73MB / 28.23MB 3.5s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 17.83MB / 28.23MB 4.1s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 19.92MB / 28.23MB 4.8s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 22.02MB / 28.23MB 5.6s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 24.12MB / 28.23MB 6.0s
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 26.21MB / 28.23MB 6.6s
+#33 ...
+
+#35 [strategy build 1/6] FROM docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
+#35 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B 0.3s done
+#35 sha256:ee9e6246b78f3a784fefa655e89ccdf2271e396000b7624d6a785cb2c2580001 125B / 125B 0.6s done
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 15.73MB / 79.13MB 6.6s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 3.15MB / 92.43MB 6.3s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 12.58MB / 64.40MB 6.0s
+#35 ...
+
+#33 [strategy stage-1 1/2] FROM docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+#33 sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 28.23MB / 28.23MB 7.0s done
+#33 extracting sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71
+#33 extracting sha256:a8ac7f6c67abc236e4c745052c404112b8fab6fe8ac3a329d1ef3b867ad67c71 1.7s done
+#33 DONE 8.8s
+
+#35 [strategy build 1/6] FROM docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 24.12MB / 79.13MB 8.6s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 20.97MB / 64.40MB 8.0s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 2.10MB / 24.04MB 1.8s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 28.31MB / 79.13MB 9.6s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 25.17MB / 64.40MB 9.2s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 4.19MB / 24.04MB 3.0s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 32.51MB / 79.13MB 10.7s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 8.39MB / 92.43MB 10.5s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 29.36MB / 64.40MB 10.4s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 6.29MB / 24.04MB 4.2s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 36.70MB / 79.13MB 11.6s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 33.55MB / 64.40MB 11.4s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 8.39MB / 24.04MB 5.3s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 40.89MB / 79.13MB 12.8s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 37.75MB / 64.40MB 12.6s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 10.49MB / 24.04MB 6.5s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 45.09MB / 79.13MB 14.0s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 13.63MB / 92.43MB 14.0s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 41.94MB / 64.40MB 13.7s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 12.58MB / 24.04MB 7.5s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 49.28MB / 79.13MB 14.9s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 46.14MB / 64.40MB 14.6s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 14.68MB / 24.04MB 8.4s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 53.48MB / 79.13MB 15.8s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 16.78MB / 24.04MB 9.3s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 50.33MB / 64.40MB 15.8s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 57.67MB / 79.13MB 16.7s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 18.87MB / 24.04MB 10.4s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 18.87MB / 92.43MB 17.3s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 20.97MB / 24.04MB 11.0s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 54.53MB / 64.40MB 17.4s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 61.87MB / 79.13MB 18.2s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 23.07MB / 24.04MB 11.6s
+#35 sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 24.04MB / 24.04MB 11.8s done
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 0B / 48.48MB 0.2s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 58.72MB / 64.40MB 18.3s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 66.06MB / 79.13MB 19.2s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 62.91MB / 64.40MB 19.4s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 3.15MB / 48.48MB 1.5s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 70.25MB / 79.13MB 20.3s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 24.12MB / 92.43MB 20.3s
+#35 sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 64.40MB / 64.40MB 19.8s done
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 74.45MB / 79.13MB 21.3s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 6.29MB / 48.48MB 2.7s
+#35 sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 79.13MB / 79.13MB 22.3s done
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 9.44MB / 48.48MB 3.6s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 29.36MB / 92.43MB 22.0s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 12.58MB / 48.48MB 4.0s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 15.73MB / 48.48MB 4.3s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 18.87MB / 48.48MB 4.6s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 34.60MB / 92.43MB 23.2s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 23.07MB / 48.48MB 5.2s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 26.21MB / 48.48MB 5.7s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 29.36MB / 48.48MB 6.1s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 39.85MB / 92.43MB 24.6s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 32.51MB / 48.48MB 6.6s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 35.65MB / 48.48MB 7.0s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 39.85MB / 48.48MB 7.5s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 45.09MB / 92.43MB 25.9s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 44.04MB / 48.48MB 7.9s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 47.19MB / 48.48MB 8.4s
+#35 sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 48.48MB / 48.48MB 8.5s done
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 50.33MB / 92.43MB 27.0s
+#35 extracting sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 55.57MB / 92.43MB 27.7s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 60.82MB / 92.43MB 28.2s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 67.11MB / 92.43MB 28.8s
+#35 extracting sha256:6bc9f599b3efabc64230fd3b969d7654fcd6c6c98ad7cf7470093fe85274a7fc 1.8s done
+#35 extracting sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 72.35MB / 92.43MB 29.4s
+#35 extracting sha256:89edcaae7ec479668d9bf0891145726173a305c809a8c4165723ceaf15b5a05f 0.7s done
+#35 extracting sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 78.64MB / 92.43MB 29.8s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 84.93MB / 92.43MB 30.3s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 91.23MB / 92.43MB 30.7s
+#35 sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 92.43MB / 92.43MB 30.9s done
+#35 extracting sha256:bbceb003542957cee7df7b79249eaf0a71d21c5203d086969b565fb6dec85d86 2.2s done
+#35 DONE 32.1s
+
+#35 [strategy build 1/6] FROM docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
+#35 extracting sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745
+#35 extracting sha256:d1ae0a59862a60fde488eccaa7f764b5f5cb60746b7adf2335f9cc05ce1ed745 1.7s done
+#35 DONE 33.8s
+
+#35 [strategy build 1/6] FROM docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
+#35 extracting sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581
+#35 extracting sha256:f7bdfd728ac2ad72d43b82689890dc698260d3a1049845f48fb3fb942df6c581 3.6s done
+#35 DONE 37.5s
+
+#35 [strategy build 1/6] FROM docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
+#35 extracting sha256:ee9e6246b78f3a784fefa655e89ccdf2271e396000b7624d6a785cb2c2580001 0.1s done
+#35 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 0.1s done
+#35 DONE 37.7s
+
+#36 [strategy build 2/6] WORKDIR /src
+#36 DONE 0.9s
+
+#37 [strategy build 3/6] COPY go.mod ./
+#37 DONE 0.1s
+
+#38 [strategy build 4/6] RUN go mod download
+#38 DONE 3.5s
+
+#39 [strategy build 5/6] COPY . .
+#39 DONE 0.1s
+
+#40 [strategy build 6/6] RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o /out/quoter .
+#40 0.367 main.go:12:2: missing go.sum entry for module providing package github.com/nats-io/nats.go (imported by trv/quoter); to add:
+#40 0.367 	go get trv/quoter
+#40 ERROR: process "/bin/sh -c CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags=\"-s -w\" -o /out/quoter ." did not complete successfully: exit code: 1
+------
+ > [strategy build 6/6] RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o /out/quoter .:
+0.367 main.go:12:2: missing go.sum entry for module providing package github.com/nats-io/nats.go (imported by trv/quoter); to add:
+0.367 	go get trv/quoter
+------
+Dockerfile:37
+
+--------------------
+
+  35 |     RUN go mod download
+
+  36 |     COPY . .
+
+  37 | >>> RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o /out/quoter .
+
+  38 |     
+
+  39 |     FROM debian:bookworm-slim
+
+--------------------
+
+target strategy: failed to solve: process "/bin/sh -c CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags=\"-s -w\" -o /out/quo
+ter ." did not complete successfully: exit code: 1
+
