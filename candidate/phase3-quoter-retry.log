@@ -1,0 +1,701 @@
+docker :  Image candidate-sim Building 
+所在位置 行:1 字符: 1
++ docker compose --project-directory 'D:\Users\ASUS\Desktop\杂代码\TRV_Gen ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Image candidate-sim Building :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ Image candidate-taker Building 
+ Image candidate-strategy Building 
+ Image candidate-hedger Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.23kB 0.0s done
+#1 DONE 0.0s
+
+#2 [sim internal] load build definition from Dockerfile
+#2 transferring dockerfile: 188B done
+#2 DONE 0.0s
+
+#3 [strategy internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.38kB done
+#3 DONE 0.0s
+
+#4 [hedger internal] load build definition from Dockerfile
+#4 transferring dockerfile: 705B done
+#4 DONE 0.0s
+
+#5 [taker internal] load build definition from Dockerfile
+#5 transferring dockerfile: 186B done
+#5 DONE 0.1s
+
+#6 [taker internal] load metadata for docker.io/library/python:3.12-slim
+#6 ...
+
+#7 [hedger internal] load metadata for docker.io/library/alpine:latest
+#7 DONE 0.9s
+
+#8 [strategy internal] load metadata for docker.io/library/golang:1.24-bookworm
+#8 DONE 0.9s
+
+#9 [hedger internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [strategy internal] load metadata for docker.io/library/debian:bookworm-slim
+#10 DONE 0.9s
+
+#11 [strategy internal] load .dockerignore
+#11 transferring context: 2B done
+#11 DONE 0.0s
+
+#12 [strategy internal] load build context
+#12 DONE 0.0s
+
+#13 [hedger 1/1] FROM docker.io/library/alpine:latest@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b
+#13 resolve docker.io/library/alpine:latest@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b 0.0s done
+#13 CACHED
+
+#6 [sim internal] load metadata for docker.io/library/python:3.12-slim
+#6 DONE 1.0s
+
+#14 [taker internal] load .dockerignore
+#14 transferring context: 2B done
+#14 DONE 0.0s
+
+#15 [sim internal] load .dockerignore
+#15 transferring context: 2B done
+#15 DONE 0.0s
+
+#16 [hedger] exporting to image
+#16 exporting layers done
+#16 exporting manifest sha256:4c815d53922f0f86b97a0ece97f507ae31aecbfd01524a276416932b780a5990 done
+#16 exporting config sha256:e289033e10735ce216a0d14a77e15b11cc2d41f6447d44f4768c6acf311db389 done
+#16 ...
+
+#17 [strategy build 1/8] FROM docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
+#17 resolve docker.io/library/golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac 0.1s done
+#17 DONE 0.1s
+
+#18 [taker internal] load build context
+#18 transferring context: 30B done
+#18 DONE 0.0s
+
+#19 [sim internal] load build context
+#19 transferring context: 31B done
+#19 DONE 0.0s
+
+#12 [strategy internal] load build context
+#12 transferring context: 1.49kB done
+#12 DONE 0.0s
+
+#20 [strategy stage-1 1/2] FROM docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+#20 resolve docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171 0.1s done
+#20 CACHED
+
+#21 [strategy build 2/8] WORKDIR /src
+#21 CACHED
+
+#22 [strategy build 3/8] COPY go.mod ./
+#22 CACHED
+
+#23 [strategy build 4/8] RUN go mod download
+#23 CACHED
+
+#24 [taker 1/4] FROM docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+#24 resolve docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea 0.1s done
+#24 DONE 0.1s
+
+#25 [sim 3/4] WORKDIR /sim
+#25 CACHED
+
+#26 [taker 2/4] RUN pip install --no-cache-dir nats-py
+#26 CACHED
+
+#27 [taker 3/4] WORKDIR /app
+#27 CACHED
+
+#28 [sim 4/4] COPY market.py .
+#28 CACHED
+
+#29 [taker 4/4] COPY taker.py .
+#29 CACHED
+
+#16 [hedger] exporting to image
+#16 exporting attestation manifest sha256:d578a477884a48f8c11cab9fb2d675d4a0f3c3c71a832d17fb3400ea0a1f48d8 0.0s done
+#16 exporting manifest list sha256:b56c6e8041089a2948af480bac5682be0c8ebbfc82a87f98bbbc1a652af46fdd 0.0s done
+#16 naming to docker.io/library/candidate-hedger:latest done
+#16 unpacking to docker.io/library/candidate-hedger:latest 0.0s done
+#16 DONE 0.2s
+
+#30 [strategy build 5/8] COPY . .
+#30 DONE 0.0s
+
+#31 [sim] exporting to image
+#31 exporting layers done
+#31 exporting manifest sha256:ae00db0d1d91499e3c6d5cbba4b854eece199d66d83599c9864aac032eae1691 done
+#31 exporting config sha256:338566379e19ab7d431fe85c812ff8262aeb65c6500f241dee2bbfe65f73bad9 done
+#31 exporting attestation manifest sha256:7c6b38629b597592c9182120a4955d1ccdaf03a59237dd5f7f5dd7f8876b98f6 0.1s done
+#31 exporting manifest list sha256:7cca4f094e1aa04297789ba9d91eb5c400fcb1dbd497396269fe33337fb7110a
+#31 exporting manifest list sha256:7cca4f094e1aa04297789ba9d91eb5c400fcb1dbd497396269fe33337fb7110a 0.0s done
+#31 naming to docker.io/library/candidate-sim:latest 0.0s done
+#31 unpacking to docker.io/library/candidate-sim:latest 0.0s done
+#31 DONE 0.2s
+
+#32 [taker] exporting to image
+#32 exporting layers done
+#32 exporting manifest sha256:561f6fd1cacbf3903abd7fcf40ebfbcebacda2c577478ecf60d4fb6656f33369 done
+#32 exporting config sha256:14a0d60d8a8bc5d9f507e20fefc144930f61e43d54eda67ef9e89f415c40f46d done
+#32 exporting attestation manifest sha256:168cc5b16c19f25190228f022056ea1c67dee449b7d7d911ea823db7e1aed7c1 0.1s done
+#32 exporting manifest list sha256:eac45ea8d6d82facd9d389af6e2b3d2da8d5820370a825051dc67384864f9a42 0.0s done
+#32 naming to docker.io/library/candidate-taker:latest 0.0s done
+#32 unpacking to docker.io/library/candidate-taker:latest 0.0s done
+#32 DONE 0.2s
+
+#33 [hedger] resolving provenance for metadata file
+#33 DONE 0.0s
+
+#34 [sim] resolving provenance for metadata file
+#34 DONE 0.0s
+
+#35 [taker] resolving provenance for metadata file
+#35 DONE 0.0s
+
+#36 [strategy build 6/8] RUN go mod tidy
+#36 0.522 go: downloading github.com/klauspost/compress v1.17.9
+#36 0.522 go: downloading github.com/nats-io/nkeys v0.4.9
+#36 0.522 go: downloading github.com/nats-io/nuid v1.0.1
+#36 2.942 go: downloading golang.org/x/crypto v0.31.0
+#36 4.252 go: downloading golang.org/x/sys v0.28.0
+#36 DONE 7.4s
+
+#37 [strategy build 7/8] RUN go test ./...
+#37 10.65 ok  	trv/quoter	0.003s
+#37 DONE 10.7s
+
+#38 [strategy build 8/8] RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o /out/quoter .
+#38 DONE 8.6s
+
+#39 [strategy stage-1 2/2] COPY --from=build /out/quoter /usr/local/bin/quoter
+#39 DONE 0.0s
+
+#40 [strategy] exporting to image
+#40 exporting layers
+#40 exporting layers 0.3s done
+#40 exporting manifest sha256:6f2b0f556408332d53f2d80059c352a6c659855b3ee4e86d07904b03bee2bbb6 0.0s done
+#40 exporting config sha256:79e0af8e424c0adc5348feedabf275bc657ae2078030082b2f357da0598bab43 0.0s done
+#40 exporting attestation manifest sha256:dd4cab89bc8099d0c5eddc200ae095885b286f0cccba43cbb5818c1d43fe5783 0.0s done
+#40 exporting manifest list sha256:c8e45bc88dabcdd2575b6429247bd416825b011836ee4f9a108930d24e4aab46 0.0s done
+#40 naming to docker.io/library/candidate-strategy:latest done
+#40 unpacking to docker.io/library/candidate-strategy:latest 0.0s done
+#40 DONE 0.5s
+
+#41 [strategy] resolving provenance for metadata file
+#41 DONE 0.0s
+ Image candidate-taker Built 
+ Image candidate-hedger Built 
+ Image candidate-sim Built 
+ Image candidate-strategy Built 
+ Container candidate-sim-1 Running 
+ Container candidate-nats-1 Recreate 
+ Container candidate-nats-1 Recreated 
+ Container candidate-exchange-1 Recreate 
+ Container candidate-exchange-1 Recreated 
+ Container candidate-hedger-1 Recreate 
+ Container candidate-taker-1 Recreate 
+ Container candidate-strategy-1 Recreate 
+ Container candidate-strategy-1 Recreated 
+ Container candidate-hedger-1 Recreated 
+ Container candidate-taker-1 Recreated 
+Attaching to exchange-1, hedger-1, nats-1, sim-1, strategy-1, taker-1
+ Container candidate-nats-1 Starting 
+ Container candidate-nats-1 Started 
+ Container candidate-exchange-1 Starting 
+nats-1  | [1] 2026/09/07 02:56:01.692676 [INF] Starting nats-server
+nats-1  | [1] 2026/09/07 02:56:01.692769 [INF]   Version:  2.14.6
+nats-1  | [1] 2026/09/07 02:56:01.692773 [INF]   Git:      [1aa10f9]
+nats-1  | [1] 2026/09/07 02:56:01.692775 [INF]   Name:     NC4XDOJLPPSOMSZG7NFLVPD2EZSYVCBPGR4I4P2SSNPRV6FTQHIFY7GX
+nats-1  | [1] 2026/09/07 02:56:01.692789 [INF]   Node:     nj0sQZS0
+nats-1  | [1] 2026/09/07 02:56:01.692790 [INF]   ID:       NC4XDOJLPPSOMSZG7NFLVPD2EZSYVCBPGR4I4P2SSNPRV6FTQHIFY7GX
+nats-1  | [1] 2026/09/07 02:56:01.693441 [INF] Starting JetStream
+nats-1  | [1] 2026/09/07 02:56:01.693499 [WRN] Temporary storage directory used, data could be lost on system reboot
+nats-1  | [1] 2026/09/07 02:56:01.695182 [INF]     _ ___ _____ ___ _____ ___ ___   _   __  __
+nats-1  | [1] 2026/09/07 02:56:01.695199 [INF]  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  |
+nats-1  | [1] 2026/09/07 02:56:01.695200 [INF] | || | _|  | | \__ \ | | |   / _| / _ \| |\/| |
+nats-1  | [1] 2026/09/07 02:56:01.695201 [INF]  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_|
+nats-1  | [1] 2026/09/07 02:56:01.695202 [INF] 
+nats-1  | [1] 2026/09/07 02:56:01.695204 [INF]          https://docs.nats.io/jetstream
+nats-1  | [1] 2026/09/07 02:56:01.695205 [INF] 
+nats-1  | [1] 2026/09/07 02:56:01.695207 [INF] ---------------- JETSTREAM ----------------
+nats-1  | [1] 2026/09/07 02:56:01.695209 [INF]   Strict:          true
+nats-1  | [1] 2026/09/07 02:56:01.695214 [INF]   Max Memory:      5.71 GB
+nats-1  | [1] 2026/09/07 02:56:01.695216 [INF]   Max Storage:     714.10 GB
+nats-1  | [1] 2026/09/07 02:56:01.695218 [INF]   Store Directory: "/tmp/nats/jetstream"
+nats-1  | [1] 2026/09/07 02:56:01.695220 [INF]   API Level:       4
+nats-1  | [1] 2026/09/07 02:56:01.695222 [INF] -------------------------------------------
+nats-1  | [1] 2026/09/07 02:56:01.696419 [INF] Took 2.950234ms to start JetStream
+nats-1  | [1] 2026/09/07 02:56:01.700959 [INF] Listening for client connections on 0.0.0.0:4222
+nats-1  | [1] 2026/09/07 02:56:01.701299 [INF] Server is ready
+ Container candidate-exchange-1 Started 
+ Container candidate-taker-1 Starting 
+ Container candidate-hedger-1 Starting 
+ Container candidate-strategy-1 Starting 
+exchange-1  | exchange: loaded instruments from /instruments.txt
+exchange-1  | exchange: 1 shard(s), NATS=nats://nats:4222
+exchange-1  | exchange: listening on 'ex.req.>'
+ Container candidate-taker-1 Started 
+strategy-1  | 2026/09/07 02:56:02 STP EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:02 quoter sender=QUOTE001 feed=AAH6 clip=1 max_pos=4
+ Container candidate-strategy-1 Started 
+hedger-1    | Put your hedger in ./hedger/ and replace this Dockerfile.
+ Container candidate-hedger-1 Started 
+taker-1     | [taker] PYTKR001 trading AAH6 clip=3 thresh=10 for 86400.0s
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+sim-1       | nats: encountered error
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+sim-1       |     return await fut
+sim-1       |            ^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+sim-1       |     transport, _ = await loop.create_connection(
+sim-1       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+sim-1       |     infos = await self._ensure_resolved(
+sim-1       |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+sim-1       |     return await loop.getaddrinfo(host, port, family=family, type=type,
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+sim-1       |     return await self.run_in_executor(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       | asyncio.exceptions.CancelledError
+sim-1       | 
+sim-1       | The above exception was the direct cause of the following exception:
+sim-1       | 
+sim-1       | Traceback (most recent call last):
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+sim-1       |     await self._connect_to_server(s)
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+sim-1       |     await self._transport.connect(
+sim-1       |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+sim-1       |     r, w = await asyncio.wait_for(
+sim-1       |            ^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+sim-1       |     async with timeouts.timeout(timeout):
+sim-1       |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+sim-1       |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+sim-1       |     raise TimeoutError from exc_val
+sim-1       | TimeoutError
+strategy-1  | 2026/09/07 02:56:03 add Q3222597 B 598 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:03 add Q3222598 S 602 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:03 status pos=0 bid=599 ask=601 live=2
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+strategy-1  | 2026/09/07 02:56:04 status pos=0 bid=599 ask=601 live=2
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+strategy-1  | 2026/09/07 02:56:04 fill feed=AAH6 match=3 order=QUOTE001:Q3222598 side=S qty=1 price=602 pos=-1 role=resting
+strategy-1  | 2026/09/07 02:56:04 cancel Q3222598 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:05 status pos=-1 bid=599 ask=602 live=1
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+strategy-1  | 2026/09/07 02:56:06 cancel Q3222597 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:06 add Q3222599 B 656 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:06 status pos=-1 bid=657 ask=660 live=1
+taker-1     | [taker] pos=15 cash=-9885 pnl=-8 fills=5
+strategy-1  | 2026/09/07 02:56:07 status pos=-1 bid=657 ask=660 live=1
+taker-1     | [taker] pos=15 cash=-9885 pnl=-8 fills=5
+strategy-1  | 2026/09/07 02:56:08 status pos=-1 bid=657 ask=660 live=1
+taker-1     | [taker] pos=15 cash=-9885 pnl=0 fills=5
+strategy-1  | 2026/09/07 02:56:08 cancel Q3222599 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:08 add Q3222600 B 654 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:09 status pos=-1 bid=654 ask=657 live=1
+taker-1     | [taker] pos=15 cash=-9885 pnl=-52 fills=5
+strategy-1  | 2026/09/07 02:56:09 cancel Q3222600 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:09 add Q3222601 B 712 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:10 status pos=-1 bid=712 ask=716 live=1
+strategy-1  | 2026/09/07 02:56:10 fill feed=AAH6 match=125 order=QUOTE001:Q3222601 side=B qty=1 price=712 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:10 add Q3222602 S 716 EXCHANGE Y 0
+taker-1     | [taker] pos=30 cash=-20595 pnl=810 fills=10
+strategy-1  | 2026/09/07 02:56:11 status pos=0 bid=711 ask=716 live=2
+strategy-1  | 2026/09/07 02:56:11 fill feed=AAH6 match=130 order=QUOTE001:Q3222602 side=S qty=1 price=716 pos=-1 role=resting
+strategy-1  | 2026/09/07 02:56:11 cancel Q3222602 EXCHANGE N 305 orderid not active
+taker-1     | [taker] pos=30 cash=-20595 pnl=705 fills=10
+strategy-1  | 2026/09/07 02:56:11 cancel Q3222601 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:11 add Q3222603 B 708 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:11 cancel Q3222603 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:11 add Q3222604 B 712 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:12 fill feed=AAH6 match=164 order=QUOTE001:Q3222604 side=B qty=1 price=712 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:12 status pos=0 bid=710 ask=712 live=1
+strategy-1  | 2026/09/07 02:56:12 add Q3222605 S 716 EXCHANGE Y 0
+taker-1     | [taker] pos=30 cash=-20595 pnl=825 fills=10
+strategy-1  | 2026/09/07 02:56:12 cancel Q3222604 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:12 cancel Q3222605 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:12 add Q3222606 B 708 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:12 add Q3222607 S 712 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:12 fill feed=AAH6 match=172 order=QUOTE001:Q3222607 side=S qty=1 price=712 pos=-1 role=resting
+strategy-1  | 2026/09/07 02:56:12 cancel Q3222607 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:13 status pos=-1 bid=712 ask=713 live=1
+strategy-1  | 2026/09/07 02:56:13 cancel Q3222606 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:13 add Q3222608 B 711 EXCHANGE Y 0
+taker-1     | [taker] pos=30 cash=-20595 pnl=750 fills=10
+strategy-1  | 2026/09/07 02:56:14 status pos=-1 bid=711 ask=714 live=1
+taker-1     | [taker] pos=30 cash=-20595 pnl=2250 fills=10
+strategy-1  | 2026/09/07 02:56:14 cancel Q3222608 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:14 add Q3222609 B 760 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:14 fill feed=AAH6 match=235 order=QUOTE001:Q3222609 side=B qty=1 price=760 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:14 cancel Q3222609 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:14 add Q3222610 B 756 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:14 add Q3222611 S 760 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:14 fill feed=AAH6 match=238 order=QUOTE001:Q3222611 side=S qty=1 price=760 pos=-1 role=resting
+strategy-1  | 2026/09/07 02:56:15 cancel Q3222610 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:15 cancel Q3222611 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:15 add Q3222612 B 760 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:15 status pos=-1 bid=760 ask=764 live=1
+strategy-1  | 2026/09/07 02:56:15 fill feed=AAH6 match=241 order=QUOTE001:Q3222612 side=B qty=1 price=760 pos=0 role=resting
+taker-1     | [taker] pos=30 cash=-20595 pnl=2250 fills=10
+strategy-1  | 2026/09/07 02:56:15 add Q3222613 S 764 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:15 cancel Q3222612 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:15 cancel Q3222613 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:15 add Q3222614 B 756 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:15 add Q3222615 S 760 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:15 fill feed=AAH6 match=250 order=QUOTE001:Q3222615 side=S qty=1 price=760 pos=-1 role=resting
+strategy-1  | 2026/09/07 02:56:15 cancel Q3222615 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:16 status pos=-1 bid=756 ask=760 live=1
+strategy-1  | 2026/09/07 02:56:16 cancel Q3222614 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:16 add Q3222616 B 760 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:16 fill feed=AAH6 match=262 order=QUOTE001:Q3222616 side=B qty=1 price=760 pos=0 role=resting
+taker-1     | [taker] pos=30 cash=-20595 pnl=2175 fills=10
+strategy-1  | 2026/09/07 02:56:16 add Q3222617 S 764 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:16 cancel Q3222616 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:16 cancel Q3222617 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:16 add Q3222618 B 756 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:16 add Q3222619 S 760 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:17 status pos=0 bid=756 ask=760 live=2
+strategy-1  | 2026/09/07 02:56:17 fill feed=AAH6 match=278 order=QUOTE001:Q3222619 side=S qty=1 price=760 pos=-1 role=resting
+strategy-1  | 2026/09/07 02:56:17 cancel Q3222618 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:17 cancel Q3222619 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:17 add Q3222620 B 760 EXCHANGE Y 0
+taker-1     | [taker] pos=30 cash=-20595 pnl=2265 fills=10
+strategy-1  | 2026/09/07 02:56:17 fill feed=AAH6 match=283 order=QUOTE001:Q3222620 side=B qty=1 price=760 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:17 cancel Q3222620 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:17 add Q3222621 B 756 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:17 add Q3222622 S 760 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:17 fill feed=AAH6 match=290 order=QUOTE001:Q3222622 side=S qty=1 price=760 pos=-1 role=resting
+strategy-1  | 2026/09/07 02:56:17 cancel Q3222621 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:17 cancel Q3222622 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:17 add Q3222623 B 760 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:18 status pos=-1 bid=760 ask=764 live=1
+taker-1     | [taker] pos=30 cash=-20595 pnl=2265 fills=10
+strategy-1  | 2026/09/07 02:56:18 fill feed=AAH6 match=300 order=QUOTE001:Q3222623 side=B qty=1 price=760 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:18 cancel Q3222623 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:18 add Q3222624 B 756 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:18 add Q3222625 S 760 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:18 fill feed=AAH6 match=302 order=QUOTE001:Q3222624 side=B qty=1 price=756 pos=1 role=resting
+strategy-1  | 2026/09/07 02:56:18 cancel Q3222624 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:18 cancel Q3222625 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:18 add Q3222626 S 659 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:18 fill feed=AAH6 match=346 order=QUOTE001:Q3222626 side=S qty=1 price=659 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:18 cancel Q3222626 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:18 add Q3222627 B 737 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:18 add Q3222628 S 741 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:19 status pos=0 bid=737 ask=741 live=2
+strategy-1  | 2026/09/07 02:56:19 fill feed=AAH6 match=433 order=QUOTE001:Q3222627 side=B qty=1 price=737 pos=1 role=resting
+strategy-1  | 2026/09/07 02:56:19 cancel Q3222627 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:19 cancel Q3222628 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:19 add Q3222629 S 664 EXCHANGE Y 0
+taker-1     | [taker] pos=12 cash=-16521 pnl=-8577 fills=84
+strategy-1  | 2026/09/07 02:56:19 fill feed=AAH6 match=576 order=QUOTE001:Q3222629 side=S qty=1 price=664 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:19 cancel Q3222629 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:19 add Q3222630 B 725 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:19 add Q3222631 S 729 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:19 fill feed=AAH6 match=656 order=QUOTE001:Q3222630 side=B qty=1 price=725 pos=1 role=resting
+strategy-1  | 2026/09/07 02:56:19 cancel Q3222630 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:19 cancel Q3222631 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:19 add Q3222632 S 716 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:20 status pos=1 bid=712 ask=716 live=1
+strategy-1  | 2026/09/07 02:56:20 fill feed=AAH6 match=687 order=QUOTE001:Q3222632 side=S qty=1 price=716 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:20 cancel Q3222632 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:20 add Q3222633 B 716 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:20 add Q3222634 S 720 EXCHANGE Y 0
+taker-1     | [taker] pos=12 cash=-17181 pnl=-8565 fills=94
+strategy-1  | 2026/09/07 02:56:20 fill feed=AAH6 match=696 order=QUOTE001:Q3222633 side=B qty=1 price=716 pos=1 role=resting
+strategy-1  | 2026/09/07 02:56:20 cancel Q3222633 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:20 cancel Q3222634 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:20 add Q3222635 S 716 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:20 fill feed=AAH6 match=702 order=QUOTE001:Q3222635 side=S qty=1 price=716 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:20 cancel Q3222635 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:20 add Q3222636 B 715 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:20 add Q3222637 S 719 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:21 status pos=0 bid=715 ask=719 live=2
+taker-1     | [taker] pos=12 cash=-17181 pnl=-8577 fills=94
+strategy-1  | 2026/09/07 02:56:21 fill feed=AAH6 match=724 order=QUOTE001:Q3222637 side=S qty=1 price=719 pos=-1 role=resting
+strategy-1  | 2026/09/07 02:56:21 cancel Q3222636 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:21 cancel Q3222637 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:21 add Q3222638 B 744 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:22 status pos=-1 bid=745 ask=750 live=1
+strategy-1  | 2026/09/07 02:56:22 cancel Q3222638 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:22 add Q3222639 B 742 EXCHANGE Y 0
+taker-1     | [taker] pos=27 cash=-28386 pnl=-8312 fills=99
+strategy-1  | 2026/09/07 02:56:23 status pos=-1 bid=743 ask=747 live=1
+taker-1     | [taker] pos=27 cash=-28386 pnl=-8271 fills=99
+strategy-1  | 2026/09/07 02:56:24 status pos=-1 bid=742 ask=746 live=1
+taker-1     | [taker] pos=27 cash=-28386 pnl=-8298 fills=99
+strategy-1  | 2026/09/07 02:56:25 status pos=-1 bid=743 ask=747 live=1
+strategy-1  | 2026/09/07 02:56:25 cancel Q3222639 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:25 add Q3222640 B 744 EXCHANGE Y 0
+taker-1     | [taker] pos=27 cash=-28386 pnl=-8244 fills=99
+strategy-1  | 2026/09/07 02:56:25 fill feed=AAH6 match=786 order=QUOTE001:Q3222640 side=B qty=1 price=744 pos=0 role=resting
+strategy-1  | 2026/09/07 02:56:25 cancel Q3222640 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:25 add Q3222641 B 701 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:25 add Q3222642 S 706 EXCHANGE Y 0
+strategy-1  | 2026/09/07 02:56:26 status pos=0 bid=702 ask=705 live=2
+taker-1     | [taker] pos=12 cash=-17871 pnl=-9429 fills=104
+strategy-1  | 2026/09/07 02:56:27 status pos=0 bid=702 ask=705 live=2
+taker-1     | [taker] pos=12 cash=-17871 pnl=-9429 fills=104
+strategy-1  | 2026/09/07 02:56:28 status pos=0 bid=702 ask=705 live=2
+strategy-1  | 2026/09/07 02:56:28 fill feed=AAH6 match=851 order=QUOTE001:Q3222641 side=B qty=1 price=701 pos=1 role=resting
+strategy-1  | 2026/09/07 02:56:28 cancel Q3222641 EXCHANGE N 305 orderid not active
+strategy-1  | 2026/09/07 02:56:28 cancel Q3222642 EXCHANGE Y 1
+strategy-1  | 2026/09/07 02:56:28 add Q3222643 S 594 EXCHANGE Y 0
+ Compose Stopping Gracefully Stopping... press Ctrl+C again to force
