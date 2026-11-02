@@ -1,0 +1,340 @@
+docker :  Image candidate-sim Building 
+所在位置 行:3 字符: 1
++ docker compose --project-directory 'D:\Users\ASUS\Desktop\杂代码\TRV_Gen ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Image candidate-sim Building :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ Image candidate-taker Building 
+ Image candidate-strategy Building 
+ Image candidate-hedger Building 
+ Image candidate-probe Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.77kB 0.0s done
+#1 DONE 0.0s
+
+#2 [hedger internal] load build definition from Dockerfile
+#2 transferring dockerfile: 705B 0.0s done
+#2 DONE 0.0s
+
+#3 [taker internal] load build definition from Dockerfile
+#3 transferring dockerfile: 186B 0.0s done
+#3 DONE 0.0s
+
+#4 [strategy internal] load build definition from Dockerfile
+#4 transferring dockerfile: 1.14kB 0.0s done
+#4 DONE 0.1s
+
+#5 [sim internal] load build definition from Dockerfile
+#5 transferring dockerfile: 188B 0.0s done
+#5 DONE 0.1s
+
+#6 [probe internal] load build definition from Dockerfile
+#6 transferring dockerfile: 204B done
+#6 DONE 0.1s
+
+#7 [probe internal] load metadata for docker.io/library/python:3.12-slim
+#7 ...
+
+#8 [auth] library/alpine:pull token for registry-1.docker.io
+#8 DONE 0.0s
+
+#9 [auth] library/python:pull token for registry-1.docker.io
+#9 DONE 0.0s
+
+#10 [strategy internal] load metadata for docker.io/library/alpine:latest
+#10 DONE 1.7s
+
+#7 [sim internal] load metadata for docker.io/library/python:3.12-slim
+#7 DONE 1.7s
+
+#11 [strategy internal] load .dockerignore
+#11 transferring context: 2B done
+#11 DONE 0.0s
+
+#12 [hedger internal] load .dockerignore
+#12 transferring context: 2B done
+#12 DONE 0.0s
+
+#13 [sim internal] load .dockerignore
+#13 transferring context: 2B done
+#13 DONE 0.0s
+
+#14 [taker internal] load .dockerignore
+#14 transferring context: 2B done
+#14 DONE 0.0s
+
+#15 [probe internal] load .dockerignore
+#15 transferring context: 2B done
+#15 DONE 0.1s
+
+#16 [sim internal] load build context
+#16 transferring context: 31B done
+#16 DONE 0.0s
+
+#17 [taker internal] load build context
+#17 transferring context: 30B done
+#17 DONE 0.0s
+
+#18 [probe 1/4] FROM docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+#18 resolve docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea 0.0s done
+#18 DONE 0.0s
+
+#19 [strategy 1/1] FROM docker.io/library/alpine:latest@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b
+#19 resolve docker.io/library/alpine:latest@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b 0.0s done
+#19 CACHED
+
+#20 [sim 3/4] WORKDIR /sim
+#20 CACHED
+
+#21 [sim 4/4] COPY market.py .
+#21 CACHED
+
+#22 [taker 4/4] COPY taker.py .
+#22 CACHED
+
+#23 [probe 2/4] RUN pip install --no-cache-dir nats-py
+#23 CACHED
+
+#24 [probe 3/4] WORKDIR /app
+#24 CACHED
+
+#25 [sim] exporting to image
+#25 exporting layers done
+#25 exporting manifest sha256:ae00db0d1d91499e3c6d5cbba4b854eece199d66d83599c9864aac032eae1691
+#25 ...
+
+#26 [probe internal] load build context
+#26 transferring context: 5.44kB done
+#26 DONE 0.1s
+
+#25 [sim] exporting to image
+#25 exporting manifest sha256:ae00db0d1d91499e3c6d5cbba4b854eece199d66d83599c9864aac032eae1691 0.0s done
+#25 exporting config sha256:338566379e19ab7d431fe85c812ff8262aeb65c6500f241dee2bbfe65f73bad9 0.0s done
+#25 exporting attestation manifest sha256:391ee6bafb4b8d3264059339546b5201131896573b2bf84f8f508fbf4a676020
+#25 ...
+
+#27 [probe 4/4] COPY probe_exchange.py .
+#27 DONE 0.1s
+
+#28 [hedger] exporting to image
+#28 exporting layers done
+#28 exporting manifest sha256:4c815d53922f0f86b97a0ece97f507ae31aecbfd01524a276416932b780a5990 done
+#28 exporting config sha256:e289033e10735ce216a0d14a77e15b11cc2d41f6447d44f4768c6acf311db389 0.0s done
+#28 exporting attestation manifest sha256:937e4fc9ba39843ea7098e58e821d885a84758629579c976309eeb3c430d990e 0.1s done
+#28 exporting manifest list sha256:85a24adbf1e8f8c108f77a4d9578558a1eb81a3713f7664baf17eaefc3e87078 0.1s done
+#28 naming to docker.io/library/candidate-hedger:latest 0.0s done
+#28 unpacking to docker.io/library/candidate-hedger:latest 0.0s done
+#28 DONE 0.2s
+
+#25 [sim] exporting to image
+#25 exporting attestation manifest sha256:391ee6bafb4b8d3264059339546b5201131896573b2bf84f8f508fbf4a676020 0.1s done
+#25 exporting manifest list sha256:9782f9817a043686b775cf29642963e5b5662f4a719b49e973bb582ed7f7a713 0.0s done
+#25 naming to docker.io/library/candidate-sim:latest 0.0s done
+#25 unpacking to docker.io/library/candidate-sim:latest 0.0s done
+#25 DONE 0.3s
+
+#29 [strategy] exporting to image
+#29 exporting layers done
+#29 exporting manifest sha256:a4d77d0088c78d022a68c9dd359eed5bfca8b3ff6f9b952ab776055e1fac78c3 0.0s done
+#29 exporting config sha256:4e6aff823a0c3bbb0d57bd1d03fb5726b58ccb993947f4b4d3ee7eb4a6237690 0.0s done
+#29 exporting attestation manifest sha256:27db8e07b17ef8895b3c3311d953db8b8d5f708f8ffc434239a0f14c632d68fe 0.1s done
+#29 exporting manifest list sha256:f0cd9a4cee90c66f4f03b76da703b191ac24697121779e5ab4175c3bd2579142 0.0s done
+#29 naming to docker.io/library/candidate-strategy:latest 0.0s done
+#29 unpacking to docker.io/library/candidate-strategy:latest 0.0s done
+#29 DONE 0.3s
+
+#30 [taker] exporting to image
+#30 exporting layers done
+#30 exporting manifest sha256:561f6fd1cacbf3903abd7fcf40ebfbcebacda2c577478ecf60d4fb6656f33369 done
+#30 exporting config sha256:14a0d60d8a8bc5d9f507e20fefc144930f61e43d54eda67ef9e89f415c40f46d 0.0s done
+#30 exporting attestation manifest sha256:45fae2604161b2e41184a59bbf65f6aacf5717e97a6a24c6057df985a93bb0b0 0.1s done
+#30 exporting manifest list sha256:e0e5dbe8b4e8b781197fe80d560068d46f7782688d1cb314fb391ff57f314615 0.1s done
+#30 naming to docker.io/library/candidate-taker:latest 0.0s done
+#30 unpacking to docker.io/library/candidate-taker:latest 0.0s done
+#30 DONE 0.3s
+
+#31 [probe] exporting to image
+#31 exporting layers 0.3s done
+#31 exporting manifest sha256:2c9f9a5182e5d2123259f4e8dda1ae4308e49ab9c876d3803d57fc9296087f83 0.0s done
+#31 exporting config sha256:5223baae834f7b773e299e02b79a29d28a1ce895b8ae2a2481c243d1b5c9110b 0.0s done
+#31 exporting attestation manifest sha256:f89c46ace3c1d2d6421f6a91d36296490b23493e0666b155e94b6f0239ea1fd7 0.0s done
+#31 exporting manifest list sha256:09da1db51df7075b14902ca3edab1d05f4932514f3ad3cc51adea66d0ab942d6 0.0s done
+#31 naming to docker.io/library/candidate-probe:latest done
+#31 unpacking to docker.io/library/candidate-probe:latest
+#31 unpacking to docker.io/library/candidate-probe:latest 0.1s done
+#31 DONE 0.5s
+
+#32 [taker] resolving provenance for metadata file
+#32 DONE 0.1s
+
+#33 [strategy] resolving provenance for metadata file
+#33 DONE 0.2s
+
+#34 [sim] resolving provenance for metadata file
+#34 DONE 0.2s
+
+#35 [hedger] resolving provenance for metadata file
+#35 DONE 0.1s
+
+#36 [probe] resolving provenance for metadata file
+#36 DONE 0.0s
+ Image candidate-strategy Built 
+ Image candidate-taker Built 
+ Image candidate-hedger Built 
+ Image candidate-probe Built 
+ Image candidate-sim Built 
+ Container candidate-taker-1 Running 
+ Container candidate-strategy-1 Running 
+ Container candidate-hedger-1 Running 
+ Container candidate-probe-1 Creating 
+ Container candidate-probe-1 Created 
+Attaching to exchange-1, hedger-1, nats-1, probe-1, sim-1, strategy-1, taker-1
+ Container candidate-nats-1 Starting 
+nats-1  | [1] 2026/09/06 23:58:28.542047 [INF] Starting nats-server
+nats-1  | [1] 2026/09/06 23:58:28.542124 [INF]   Version:  2.14.6
+nats-1  | [1] 2026/09/06 23:58:28.542129 [INF]   Git:      [1aa10f9]
+nats-1  | [1] 2026/09/06 23:58:28.542134 [INF]   Name:     NAWYRWBQQA77BODLEK3FC74CEJZVAHOLYKV377D6KDBLCSSFYER2U5UU
+nats-1  | [1] 2026/09/06 23:58:28.542146 [INF]   Node:     7g7ykIUp
+nats-1  | [1] 2026/09/06 23:58:28.542148 [INF]   ID:       NAWYRWBQQA77BODLEK3FC74CEJZVAHOLYKV377D6KDBLCSSFYER2U5UU
+nats-1  | [1] 2026/09/06 23:58:28.543190 [INF] Starting JetStream
+nats-1  | [1] 2026/09/06 23:58:28.543223 [WRN] Temporary storage directory used, data could be lost on system reboot
+nats-1  | [1] 2026/09/06 23:58:28.544732 [INF]     _ ___ _____ ___ _____ ___ ___   _   __  __
+nats-1  | [1] 2026/09/06 23:58:28.544766 [INF]  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  |
+nats-1  | [1] 2026/09/06 23:58:28.544769 [INF] | || | _|  | | \__ \ | | |   / _| / _ \| |\/| |
+nats-1  | [1] 2026/09/06 23:58:28.544770 [INF]  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_|
+nats-1  | [1] 2026/09/06 23:58:28.544771 [INF] 
+nats-1  | [1] 2026/09/06 23:58:28.544773 [INF]          https://docs.nats.io/jetstream
+nats-1  | [1] 2026/09/06 23:58:28.544774 [INF] 
+nats-1  | [1] 2026/09/06 23:58:28.544775 [INF] ---------------- JETSTREAM ----------------
+nats-1  | [1] 2026/09/06 23:58:28.544777 [INF]   Strict:          true
+nats-1  | [1] 2026/09/06 23:58:28.544782 [INF]   Max Memory:      5.71 GB
+nats-1  | [1] 2026/09/06 23:58:28.544784 [INF]   Max Storage:     715.30 GB
+nats-1  | [1] 2026/09/06 23:58:28.544786 [INF]   Store Directory: "/tmp/nats/jetstream"
+nats-1  | [1] 2026/09/06 23:58:28.544788 [INF]   API Level:       4
+nats-1  | [1] 2026/09/06 23:58:28.544790 [INF] -------------------------------------------
+nats-1  | [1] 2026/09/06 23:58:28.546714 [INF]   Starting restore for stream '$G > KV_EX_META'
+nats-1  | [1] 2026/09/06 23:58:28.548438 [INF]   Restored 3 messages for stream '$G > KV_EX_META' in 2ms
+nats-1  | [1] 2026/09/06 23:58:28.548979 [INF] Took 5.762353ms to start JetStream
+nats-1  | [1] 2026/09/06 23:58:28.552992 [INF] Listening for client connections on 0.0.0.0:4222
+nats-1  | [1] 2026/09/06 23:58:28.553229 [INF] Server is ready
+ Container candidate-nats-1 Started 
+ Container candidate-exchange-1 Starting 
+ Container candidate-exchange-1 Started 
+ Container candidate-probe-1 Starting 
+ Container candidate-sim-1 Starting 
+exchange-1  | exchange: loaded instruments from /instruments.txt
+exchange-1  | exchange: 1 shard(s), NATS=nats://nats:4222
+exchange-1  | exchange: listening on 'ex.req.>'
+ Container candidate-sim-1 Started 
+ Container candidate-probe-1 Started 
+probe-1     | META keys=['AAM6', 'AAH6', 'AAU6']
+probe-1     | META AAM6 ticksize=1 ref_price=600 band=5000 min_volume=1 max_volume=10000000 position_limit=1000000000 max_tps=0 last_traded_price=600
+probe-1     | META AAH6 ticksize=1 ref_price=600 band=5000 min_volume=1 max_volume=10000000 position_limit=1000000000 max_tps=0 last_traded_price=600
+probe-1     | META AAU6 ticksize=1 ref_price=600 band=5000 min_volume=1 max_volume=10000000 position_limit=1000000000 max_tps=0 last_traded_price=600
+probe-1     | PROBE connected url=nats://nats:4222 feed=AAH6 sender=PROBE001
+taker-1     | nats: encountered error
+taker-1     | Traceback (most recent call last):
+taker-1     |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+taker-1     |     return await fut
+taker-1     |            ^^^^^^^^^
+taker-1     |   File "/usr/local/lib/python3.12/asyncio/streams.py", line 48, in open_connection
+taker-1     |     transport, _ = await loop.create_connection(
+taker-1     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+taker-1     |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1083, in create_connection
+taker-1     |     infos = await self._ensure_resolved(
+taker-1     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+taker-1     |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1466, in _ensure_resolved
+taker-1     |     return await loop.getaddrinfo(host, port, family=family, type=type,
+taker-1     |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+taker-1     |   File "/usr/local/lib/python3.12/asyncio/base_events.py", line 905, in getaddrinfo
+taker-1     |     return await self.run_in_executor(
+taker-1     |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+taker-1     | asyncio.exceptions.CancelledError
+taker-1     | 
+taker-1     | The above exception was the direct cause of the following exception:
+taker-1     | 
+taker-1     | Traceback (most recent call last):
+taker-1     |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1501, in _select_next_server
+taker-1     |     await self._connect_to_server(s)
+taker-1     |   File "/usr/local/lib/python3.12/site-packages/nats/aio/client.py", line 1470, in _connect_to_server
+taker-1     |     await self._transport.connect(
+taker-1     |   File "/usr/local/lib/python3.12/site-packages/nats/aio/transport.py", line 117, in connect
+taker-1     |     r, w = await asyncio.wait_for(
+taker-1     |            ^^^^^^^^^^^^^^^^^^^^^^^
+taker-1     |   File "/usr/local/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+taker-1     |     async with timeouts.timeout(timeout):
+taker-1     |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+taker-1     |   File "/usr/local/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+taker-1     |     raise TimeoutError from exc_val
+taker-1     | TimeoutError
+sim-1       | [market] running on nats://nats:4222 (Ctrl-C to stop)
+taker-1     | [taker] PYTKR001 trading AAH6 clip=3 thresh=10 for 86400.0s
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+taker-1     | [taker] pos=-15 cash=8685 pnl=-8 fills=5
+taker-1     | [taker] pos=-15 cash=8685 pnl=-82 fills=5
+taker-1     | [taker] pos=-15 cash=8685 pnl=-22 fills=5
+taker-1     | [taker] pos=-15 cash=8685 pnl=-90 fills=5
+taker-1     | [taker] pos=6 cash=-8154 pnl=-4281 fills=44
+taker-1     | [taker] pos=6 cash=-8154 pnl=-4281 fills=44
+taker-1     | [taker] pos=6 cash=-8154 pnl=-4302 fills=44
+taker-1     | [taker] pos=6 cash=-8154 pnl=-4275 fills=44
+taker-1     | [taker] pos=21 cash=-18879 pnl=-4032 fills=49
+taker-1     | [taker] pos=21 cash=-18879 pnl=-3958 fills=49
+taker-1     | [taker] pos=21 cash=-18879 pnl=-4053 fills=49
+taker-1     | [taker] pos=30 cash=-25764 pnl=-3009 fills=52
+taker-1     | [taker] pos=30 cash=-25764 pnl=-2949 fills=52
+taker-1     | [taker] pos=30 cash=-25764 pnl=-3069 fills=52
+probe-1     | REPORT feed=AAH6 passive_seconds=20.0 active=False
+probe-1     | REPORT bbo_updates=7205 md_types={'A': 3764, 'C': 3741, 'E': 242, 'T': 242}
+probe-1     | REPORT md_subjects={'ex.md.AAH6.BGQUOT02': 2726, 'ex.md.AAH6.BGQUOT01': 4706, 'ex.md.AAH6.TAKER002': 56, 'ex.md.AAH6.MOVER001': 310, 'ex.md.AAH6.TAKER001': 40, 'ex.md.AAH6.PYTKR001': 151}
+probe-1     | REPORT last_bbo=1788739129045271768 AAH6 753 8 760 3
+probe-1     | REPORT timestamp_age_ms=min:0.480 max:2.521
+probe-1     | MD_EXAMPLE subject=ex.md.AAH6.BGQUOT02 payload=1788739110591880038 A BGQUOT02:08470055 B 6 595
+probe-1     | MD_EXAMPLE subject=ex.md.AAH6.BGQUOT02 payload=1788739110591913377 A BGQUOT02:08470056 S 6 605
+probe-1     | MD_EXAMPLE subject=ex.md.AAH6.BGQUOT02 payload=1788739110591916148 A BGQUOT02:08470057 B 6 594
+probe-1     | MD_EXAMPLE subject=ex.md.AAH6.BGQUOT02 payload=1788739110591917731 A BGQUOT02:08470058 S 6 606
+probe-1     | MD_EXAMPLE subject=ex.md.AAH6.BGQUOT02 payload=1788739110591919748 A BGQUOT02:08470059 B 6 593
+probe-1     | MD_EXAMPLE subject=ex.md.AAH6.BGQUOT02 payload=1788739110591922638 A BGQUOT02:08470060 S 6 607
+probe-1     | MD_EXAMPLE subject=ex.md.AAH6.BGQUOT02 payload=1788739110591929320 A BGQUOT02:08470061 B 6 592
+probe-1     | MD_EXAMPLE subject=ex.md.AAH6.BGQUOT02 payload=1788739110591931106 A BGQUOT02:08470062 S 6 608
+
+[Kprobe-1 exited with code 0
+ Compose Stopping Aborting on container exit...
+ Container candidate-taker-1 Stopping 
+ Container candidate-strategy-1 Stopping 
+ Container candidate-hedger-1 Stopping 
+ Container candidate-probe-1 Stopping 
+ Container candidate-sim-1 Stopping 
+ Container candidate-probe-1 Stopped 
+taker-1     | [taker] pos=30 cash=-25764 pnl=-3054 fills=52
+taker-1     | [taker] pos=30 cash=-25764 pnl=-2979 fills=52
+taker-1     | [taker] pos=30 cash=-25764 pnl=-2949 fills=52
+ Container candidate-hedger-1 Stopped 
+
+[Khedger-1 exited with code 137
+ Container candidate-taker-1 Stopped 
+
+[Ktaker-1 exited with code 137
+ Container candidate-sim-1 Stopped 
+
+[Ksim-1 exited with code 137
+ Container candidate-strategy-1 Stopped 
+ Container candidate-exchange-1 Stopping 
+
+[Kstrategy-1 exited with code 137
+exchange-1  | exchange: shutdown
+ Container candidate-exchange-1 Stopped 
+ Container candidate-nats-1 Stopping 
+
+[Kexchange-1 exited with code 0
+nats-1      | [1] 2026/09/06 23:58:53.352886 [INF] Trapped "terminated" signal
+nats-1      | [1] 2026/09/06 23:58:53.353152 [INF] Initiating Shutdown...
+nats-1      | [1] 2026/09/06 23:58:53.353179 [INF] Initiating JetStream Shutdown...
+nats-1      | [1] 2026/09/06 23:58:53.353483 [INF] JetStream Shutdown
+nats-1      | [1] 2026/09/06 23:58:53.353561 [INF] Server Exiting..
+ Container candidate-nats-1 Stopped 
+
+[Knats-1 exited with code 0
