@@ -1,0 +1,375 @@
+hedger-1    | Put your hedger in ./hedger/ and replace this Dockerfile.
+nats-1      | [1] 2026/09/06 23:22:57.919800 [INF] Starting nats-server
+hedger-1    | Put your hedger in ./hedger/ and replace this Dockerfile.
+nats-1      | [1] 2026/09/06 23:22:57.919884 [INF]   Version:  2.14.6
+nats-1      | [1] 2026/09/06 23:22:57.919889 [INF]   Git:      [1aa10f9]
+strategy-1  | Put your strategy in ./strategy/ and replace this Dockerfile.
+nats-1      | [1] 2026/09/06 23:22:57.919890 [INF]   Name:     NB6IHN7QQYOMVIPT7NEN5R7PSCOOIVDEM3OUAUMWD62RIHUXDFOYC6AG
+strategy-1  | Put your strategy in ./strategy/ and replace this Dockerfile.
+nats-1      | [1] 2026/09/06 23:22:57.919900 [INF]   Node:     OjDb1SAm
+nats-1      | [1] 2026/09/06 23:22:57.919901 [INF]   ID:       NB6IHN7QQYOMVIPT7NEN5R7PSCOOIVDEM3OUAUMWD62RIHUXDFOYC6AG
+nats-1      | [1] 2026/09/06 23:22:57.920357 [INF] Starting JetStream
+nats-1      | [1] 2026/09/06 23:22:57.920397 [WRN] Temporary storage directory used, data could be lost on system reboot
+nats-1      | [1] 2026/09/06 23:22:57.921583 [INF]     _ ___ _____ ___ _____ ___ ___   _   __  __
+exchange-1  | exchange: loaded instruments from /instruments.txt
+taker-1     | [taker] PYTKR001 trading AAH6 clip=3 thresh=10 for 86400.0s
+exchange-1  | exchange: 1 shard(s), NATS=nats://nats:4222
+exchange-1  | exchange: listening on 'ex.req.>'
+nats-1      | [1] 2026/09/06 23:22:57.921610 [INF]  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  |
+nats-1      | [1] 2026/09/06 23:22:57.921612 [INF] | || | _|  | | \__ \ | | |   / _| / _ \| |\/| |
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+sim-1       | [market] running on nats://nats:4222 (Ctrl-C to stop)
+nats-1      | [1] 2026/09/06 23:22:57.921614 [INF]  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_|
+nats-1      | [1] 2026/09/06 23:22:57.921615 [INF] 
+exchange-1  | exchange: shutdown
+nats-1      | [1] 2026/09/06 23:22:57.921616 [INF]          https://docs.nats.io/jetstream
+nats-1      | [1] 2026/09/06 23:22:57.921617 [INF] 
+nats-1      | [1] 2026/09/06 23:22:57.921619 [INF] ---------------- JETSTREAM ----------------
+nats-1      | [1] 2026/09/06 23:22:57.921620 [INF]   Strict:          true
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+nats-1      | [1] 2026/09/06 23:22:57.921625 [INF]   Max Memory:      5.71 GB
+nats-1      | [1] 2026/09/06 23:22:57.921627 [INF]   Max Storage:     715.31 GB
+nats-1      | [1] 2026/09/06 23:22:57.921628 [INF]   Store Directory: "/tmp/nats/jetstream"
+nats-1      | [1] 2026/09/06 23:22:57.921630 [INF]   API Level:       4
+taker-1     | [taker] pos=0 cash=0 pnl=0 fills=0
+nats-1      | [1] 2026/09/06 23:22:57.921632 [INF] -------------------------------------------
+nats-1      | [1] 2026/09/06 23:22:57.923000 [INF] Took 2.608933ms to start JetStream
+nats-1      | [1] 2026/09/06 23:22:57.926506 [INF] Listening for client connections on 0.0.0.0:4222
+taker-1     | [taker] pos=-15 cash=8535 pnl=-112 fills=5
+taker-1     | [taker] pos=-15 cash=8535 pnl=-105 fills=5
+taker-1     | [taker] pos=-15 cash=8535 pnl=-105 fills=5
+taker-1     | [taker] pos=0 cash=-1050 pnl=-1050 fills=10
+taker-1     | [taker] pos=0 cash=-1050 pnl=-1050 fills=10
+taker-1     | [taker] pos=0 cash=-1050 pnl=-1050 fills=10
+taker-1     | [taker] pos=-9 cash=4188 pnl=-1221 fills=17
+taker-1     | [taker] pos=-9 cash=4188 pnl=-1234 fills=17
+nats-1      | [1] 2026/09/06 23:22:57.926735 [INF] Server is ready
+taker-1     | [taker] pos=-9 cash=4188 pnl=-1248 fills=17
+nats-1      | [1] 2026/09/06 23:28:35.028555 [INF] Trapped "terminated" signal
+taker-1     | [taker] pos=-9 cash=4188 pnl=-1248 fills=17
+nats-1      | [1] 2026/09/06 23:28:35.028921 [INF] Initiating Shutdown...
+nats-1      | [1] 2026/09/06 23:28:35.028948 [INF] Initiating JetStream Shutdown...
+taker-1     | [taker] pos=6 cash=-5832 pnl=-1863 fills=22
+nats-1      | [1] 2026/09/06 23:28:35.029231 [INF] JetStream Shutdown
+nats-1      | [1] 2026/09/06 23:28:35.029378 [INF] Server Exiting..
+taker-1     | [taker] pos=6 cash=-5832 pnl=-1863 fills=22
+taker-1     | [taker] pos=6 cash=-5832 pnl=-1860 fills=22
+taker-1     | [taker] pos=6 cash=-5832 pnl=-1860 fills=22
+taker-1     | [taker] pos=-9 cash=3738 pnl=-2004 fills=27
+taker-1     | [taker] pos=-9 cash=3738 pnl=-2008 fills=27
+taker-1     | [taker] pos=-9 cash=3738 pnl=-2008 fills=27
+taker-1     | [taker] pos=-9 cash=3738 pnl=-2022 fills=27
+taker-1     | [taker] pos=-24 cash=12753 pnl=-1683 fills=32
+taker-1     | [taker] pos=-24 cash=12753 pnl=-1683 fills=32
+taker-1     | [taker] pos=-24 cash=12753 pnl=-1683 fills=32
+taker-1     | [taker] pos=-24 cash=12753 pnl=-1683 fills=32
+taker-1     | [taker] pos=-9 cash=3003 pnl=-2820 fills=37
+taker-1     | [taker] pos=-9 cash=3003 pnl=-2798 fills=37
+taker-1     | [taker] pos=6 cash=-7152 pnl=-3108 fills=42
+taker-1     | [taker] pos=6 cash=-7152 pnl=-3132 fills=42
+taker-1     | [taker] pos=6 cash=-7152 pnl=-3108 fills=42
+taker-1     | [taker] pos=6 cash=-7152 pnl=-3132 fills=42
+taker-1     | [taker] pos=-9 cash=2553 pnl=-3274 fills=47
+taker-1     | [taker] pos=-9 cash=2553 pnl=-3274 fills=47
+taker-1     | [taker] pos=-9 cash=2553 pnl=-3274 fills=47
+taker-1     | [taker] pos=-24 cash=10503 pnl=-2301 fills=52
+taker-1     | [taker] pos=-24 cash=10503 pnl=-2373 fills=52
+taker-1     | [taker] pos=-24 cash=10503 pnl=-2301 fills=52
+taker-1     | [taker] pos=-24 cash=10503 pnl=-2337 fills=52
+taker-1     | [taker] pos=-24 cash=9147 pnl=-4473 fills=64
+taker-1     | [taker] pos=-24 cash=9147 pnl=-4485 fills=64
+taker-1     | [taker] pos=-24 cash=9147 pnl=-4485 fills=64
+taker-1     | [taker] pos=-24 cash=9147 pnl=-4485 fills=64
+taker-1     | [taker] pos=-24 cash=8697 pnl=-5787 fills=74
+taker-1     | [taker] pos=-24 cash=8697 pnl=-5787 fills=74
+taker-1     | [taker] pos=-24 cash=8697 pnl=-5787 fills=74
+taker-1     | [taker] pos=-9 cash=-1953 pnl=-8316 fills=79
+taker-1     | [taker] pos=-9 cash=-1953 pnl=-8307 fills=79
+taker-1     | [taker] pos=-9 cash=-1953 pnl=-8284 fills=79
+taker-1     | [taker] pos=-9 cash=-1953 pnl=-8284 fills=79
+taker-1     | [taker] pos=3 cash=-11133 pnl=-8846 fills=83
+taker-1     | [taker] pos=6 cash=-13428 pnl=-8880 fills=84
+taker-1     | [taker] pos=6 cash=-13428 pnl=-8856 fills=84
+taker-1     | [taker] pos=6 cash=-13428 pnl=-8880 fills=84
+taker-1     | [taker] pos=6 cash=-13428 pnl=-8856 fills=84
+taker-1     | [taker] pos=-9 cash=-3603 pnl=-9525 fills=89
+taker-1     | [taker] pos=-9 cash=-3603 pnl=-9530 fills=89
+taker-1     | [taker] pos=6 cash=-15078 pnl=-10506 fills=94
+taker-1     | [taker] pos=6 cash=-15078 pnl=-10524 fills=94
+taker-1     | [taker] pos=6 cash=-15078 pnl=-10518 fills=94
+taker-1     | [taker] pos=-9 cash=-5271 pnl=-11472 fills=101
+taker-1     | [taker] pos=6 cash=-16086 pnl=-11763 fills=106
+taker-1     | [taker] pos=6 cash=-16086 pnl=-11781 fills=106
+taker-1     | [taker] pos=6 cash=-16086 pnl=-11781 fills=106
+taker-1     | [taker] pos=21 cash=-27471 pnl=-11574 fills=111
+taker-1     | [taker] pos=21 cash=-27471 pnl=-11679 fills=111
+taker-1     | [taker] pos=21 cash=-27471 pnl=-11595 fills=111
+taker-1     | [taker] pos=6 cash=-17865 pnl=-13731 fills=122
+taker-1     | [taker] pos=30 cash=-35043 pnl=-13353 fills=130
+taker-1     | [taker] pos=30 cash=-35043 pnl=-13443 fills=130
+taker-1     | [taker] pos=30 cash=-35043 pnl=-13413 fills=130
+taker-1     | [taker] pos=15 cash=-25143 pnl=-15160 fills=135
+taker-1     | [taker] pos=15 cash=-25143 pnl=-15026 fills=135
+taker-1     | [taker] pos=15 cash=-25143 pnl=-15033 fills=135
+taker-1     | [taker] pos=15 cash=-25143 pnl=-15033 fills=135
+taker-1     | [taker] pos=30 cash=-35973 pnl=-14388 fills=140
+taker-1     | [taker] pos=30 cash=-35973 pnl=-14508 fills=140
+taker-1     | [taker] pos=30 cash=-35973 pnl=-14418 fills=140
+taker-1     | [taker] pos=30 cash=-35973 pnl=-13698 fills=140
+taker-1     | [taker] pos=30 cash=-35973 pnl=-13698 fills=140
+taker-1     | [taker] pos=30 cash=-35973 pnl=-13698 fills=140
+taker-1     | [taker] pos=30 cash=-35973 pnl=-13698 fills=140
+taker-1     | [taker] pos=30 cash=-35973 pnl=-13113 fills=140
+taker-1     | [taker] pos=30 cash=-35973 pnl=-13233 fills=140
+taker-1     | [taker] pos=30 cash=-35973 pnl=-13173 fills=140
+taker-1     | [taker] pos=15 cash=-25218 pnl=-14373 fills=145
+taker-1     | [taker] pos=15 cash=-25218 pnl=-14336 fills=145
+taker-1     | [taker] pos=15 cash=-25218 pnl=-14336 fills=145
+taker-1     | [taker] pos=30 cash=-36693 pnl=-13833 fills=150
+taker-1     | [taker] pos=30 cash=-36693 pnl=-13893 fills=150
+taker-1     | [taker] pos=30 cash=-36693 pnl=-13893 fills=150
+taker-1     | [taker] pos=30 cash=-36693 pnl=-13893 fills=150
+taker-1     | [taker] pos=30 cash=-36693 pnl=-13893 fills=150
+taker-1     | [taker] pos=30 cash=-38346 pnl=-16926 fills=182
+taker-1     | [taker] pos=30 cash=-38346 pnl=-17046 fills=182
+taker-1     | [taker] pos=30 cash=-38346 pnl=-16926 fills=182
+taker-1     | [taker] pos=15 cash=-28482 pnl=-18567 fills=187
+taker-1     | [taker] pos=15 cash=-28482 pnl=-18492 fills=187
+taker-1     | [taker] pos=15 cash=-28482 pnl=-18552 fills=187
+taker-1     | [taker] pos=15 cash=-28482 pnl=-18477 fills=187
+taker-1     | [taker] pos=0 cash=-19152 pnl=-19152 fills=192
+taker-1     | [taker] pos=0 cash=-19152 pnl=-19152 fills=192
+taker-1     | [taker] pos=0 cash=-19152 pnl=-19152 fills=192
+taker-1     | [taker] pos=15 cash=-29247 pnl=-19160 fills=197
+taker-1     | [taker] pos=15 cash=-29247 pnl=-19160 fills=197
+taker-1     | [taker] pos=15 cash=-29247 pnl=-19204 fills=197
+taker-1     | [taker] pos=15 cash=-29247 pnl=-19160 fills=197
+taker-1     | [taker] pos=30 cash=-39657 pnl=-18957 fills=202
+taker-1     | [taker] pos=30 cash=-39657 pnl=-18837 fills=202
+taker-1     | [taker] pos=30 cash=-39657 pnl=-18957 fills=202
+taker-1     | [taker] pos=15 cash=-30432 pnl=-21162 fills=207
+taker-1     | [taker] pos=15 cash=-30432 pnl=-21102 fills=207
+taker-1     | [taker] pos=15 cash=-30432 pnl=-21132 fills=207
+taker-1     | [taker] pos=0 cash=-21672 pnl=-21672 fills=212
+taker-1     | [taker] pos=0 cash=-21672 pnl=-21672 fills=212
+taker-1     | [taker] pos=0 cash=-21672 pnl=-21672 fills=212
+taker-1     | [taker] pos=0 cash=-21672 pnl=-21672 fills=212
+taker-1     | [taker] pos=15 cash=-32127 pnl=-21717 fills=217
+taker-1     | [taker] pos=15 cash=-32127 pnl=-21747 fills=217
+taker-1     | [taker] pos=15 cash=-32127 pnl=-21770 fills=217
+taker-1     | [taker] pos=0 cash=-22122 pnl=-22122 fills=222
+taker-1     | [taker] pos=0 cash=-22122 pnl=-22122 fills=222
+taker-1     | [taker] pos=0 cash=-22122 pnl=-22122 fills=222
+taker-1     | [taker] pos=0 cash=-22122 pnl=-22122 fills=222
+taker-1     | [taker] pos=-15 cash=-12972 pnl=-22174 fills=227
+taker-1     | [taker] pos=-15 cash=-12972 pnl=-22174 fills=227
+taker-1     | [taker] pos=-15 cash=-12972 pnl=-22174 fills=227
+taker-1     | [taker] pos=-15 cash=-12972 pnl=-22182 fills=227
+taker-1     | [taker] pos=-15 cash=-12972 pnl=-22182 fills=227
+taker-1     | [taker] pos=0 cash=-22737 pnl=-22737 fills=232
+taker-1     | [taker] pos=0 cash=-22737 pnl=-22737 fills=232
+taker-1     | [taker] pos=0 cash=-22737 pnl=-22737 fills=232
+taker-1     | [taker] pos=-15 cash=-13602 pnl=-22744 fills=237
+taker-1     | [taker] pos=-15 cash=-13602 pnl=-22744 fills=237
+taker-1     | [taker] pos=-15 cash=-13602 pnl=-22767 fills=237
+taker-1     | [taker] pos=-15 cash=-13602 pnl=-22760 fills=237
+taker-1     | [taker] pos=-30 cash=-5022 pnl=-22377 fills=242
+taker-1     | [taker] pos=-30 cash=-5022 pnl=-22422 fills=242
+taker-1     | [taker] pos=-30 cash=-5022 pnl=-22302 fills=242
+taker-1     | [taker] pos=-15 cash=-14082 pnl=-23112 fills=247
+taker-1     | [taker] pos=-15 cash=-14082 pnl=-23044 fills=247
+taker-1     | [taker] pos=-15 cash=-14082 pnl=-23022 fills=247
+taker-1     | [taker] pos=-15 cash=-14082 pnl=-23090 fills=247
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-22677 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-22692 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-22587 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-21102 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-21222 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-21117 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-21132 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-20517 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-20517 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-20427 fills=252
+taker-1     | [taker] pos=-30 cash=-5682 pnl=-20442 fills=252
+taker-1     | [taker] pos=-15 cash=-14772 pnl=-23810 fills=257
+taker-1     | [taker] pos=-15 cash=-14772 pnl=-23817 fills=257
+taker-1     | [taker] pos=-15 cash=-14772 pnl=-23780 fills=257
+taker-1     | [taker] pos=0 cash=-24762 pnl=-24762 fills=262
+taker-1     | [taker] pos=0 cash=-24762 pnl=-24762 fills=262
+taker-1     | [taker] pos=0 cash=-24762 pnl=-24762 fills=262
+taker-1     | [taker] pos=15 cash=-35097 pnl=-24770 fills=267
+taker-1     | [taker] pos=15 cash=-35097 pnl=-24770 fills=267
+taker-1     | [taker] pos=15 cash=-35097 pnl=-24814 fills=267
+taker-1     | [taker] pos=30 cash=-46527 pnl=-23667 fills=272
+taker-1     | [taker] pos=30 cash=-46527 pnl=-23787 fills=272
+taker-1     | [taker] pos=30 cash=-46527 pnl=-23682 fills=272
+taker-1     | [taker] pos=15 cash=-36342 pnl=-26112 fills=277
+taker-1     | [taker] pos=15 cash=-36342 pnl=-26112 fills=277
+taker-1     | [taker] pos=15 cash=-36342 pnl=-26052 fills=277
+taker-1     | [taker] pos=15 cash=-36342 pnl=-26052 fills=277
+taker-1     | [taker] pos=0 cash=-26517 pnl=-26517 fills=282
+taker-1     | [taker] pos=0 cash=-26517 pnl=-26517 fills=282
+taker-1     | [taker] pos=0 cash=-26517 pnl=-26517 fills=282
+taker-1     | [taker] pos=-15 cash=-17877 pnl=-26554 fills=287
+taker-1     | [taker] pos=-15 cash=-17877 pnl=-26517 fills=287
+taker-1     | [taker] pos=-15 cash=-17877 pnl=-26570 fills=287
+taker-1     | [taker] pos=-15 cash=-18810 pnl=-27968 fills=299
+taker-1     | [taker] pos=-15 cash=-18810 pnl=-27922 fills=299
+taker-1     | [taker] pos=-15 cash=-18810 pnl=-27938 fills=299
+taker-1     | [taker] pos=-15 cash=-18810 pnl=-27945 fills=299
+taker-1     | [taker] pos=-30 cash=-10395 pnl=-27315 fills=304
+taker-1     | [taker] pos=-30 cash=-10395 pnl=-27330 fills=304
+taker-1     | [taker] pos=-30 cash=-10395 pnl=-27435 fills=304
+taker-1     | [taker] pos=-30 cash=-10395 pnl=-27375 fills=304
+taker-1     | [taker] pos=-30 cash=-11349 pnl=-29529 fills=324
+taker-1     | [taker] pos=-30 cash=-11349 pnl=-29589 fills=324
+taker-1     | [taker] pos=-30 cash=-11349 pnl=-29574 fills=324
+taker-1     | [taker] pos=-15 cash=-21204 pnl=-31052 fills=329
+taker-1     | [taker] pos=-15 cash=-21204 pnl=-31052 fills=329
+taker-1     | [taker] pos=-15 cash=-21204 pnl=-31052 fills=329
+taker-1     | [taker] pos=-15 cash=-21204 pnl=-31052 fills=329
+taker-1     | [taker] pos=-30 cash=-11934 pnl=-30669 fills=334
+taker-1     | [taker] pos=-30 cash=-11934 pnl=-30669 fills=334
+taker-1     | [taker] pos=-30 cash=-11934 pnl=-30579 fills=334
+taker-1     | [taker] pos=-30 cash=-11934 pnl=-30579 fills=334
+taker-1     | [taker] pos=-15 cash=-22134 pnl=-32244 fills=339
+taker-1     | [taker] pos=-15 cash=-22134 pnl=-32236 fills=339
+taker-1     | [taker] pos=-15 cash=-22134 pnl=-32259 fills=339
+taker-1     | [taker] pos=-30 cash=-12519 pnl=-31764 fills=344
+taker-1     | [taker] pos=-30 cash=-12519 pnl=-31764 fills=344
+taker-1     | [taker] pos=-30 cash=-12519 pnl=-31749 fills=344
+taker-1     | [taker] pos=-30 cash=-12519 pnl=-31854 fills=344
+taker-1     | [taker] pos=-30 cash=-12519 pnl=-30819 fills=344
+taker-1     | [taker] pos=-30 cash=-12519 pnl=-30714 fills=344
+taker-1     | [taker] pos=-30 cash=-12519 pnl=-30714 fills=344
+taker-1     | [taker] pos=-30 cash=-12519 pnl=-30759 fills=344
+taker-1     | [taker] pos=-15 cash=-22299 pnl=-32019 fills=349
+taker-1     | [taker] pos=-15 cash=-22299 pnl=-32079 fills=349
+taker-1     | [taker] pos=-15 cash=-22299 pnl=-32079 fills=349
+taker-1     | [taker] pos=-30 cash=-13194 pnl=-31614 fills=354
+taker-1     | [taker] pos=-30 cash=-13194 pnl=-31494 fills=354
+taker-1     | [taker] pos=-30 cash=-13194 pnl=-31599 fills=354
+taker-1     | [taker] pos=-30 cash=-13194 pnl=-31614 fills=354
+taker-1     | [taker] pos=-30 cash=-13194 pnl=-13194 fills=354
+taker-1     | [taker] pos=-15 cash=-23169 pnl=-33046 fills=359
+taker-1     | [taker] pos=-15 cash=-23169 pnl=-33062 fills=359
+taker-1     | [taker] pos=-15 cash=-23169 pnl=-33054 fills=359
+taker-1     | [taker] pos=-30 cash=-15114 pnl=-31434 fills=364
+taker-1     | [taker] pos=-30 cash=-15114 pnl=-31434 fills=364
+taker-1     | [taker] pos=-30 cash=-15114 pnl=-31329 fills=364
+taker-1     | [taker] pos=-15 cash=-24204 pnl=-33242 fills=369
+taker-1     | [taker] pos=-15 cash=-24204 pnl=-33196 fills=369
+taker-1     | [taker] pos=-15 cash=-24204 pnl=-33242 fills=369
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-32634 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-32679 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-32709 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-32754 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-29679 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-29694 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-29694 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-29679 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-28974 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-29094 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-28974 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-29094 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-29064 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-29094 fills=374
+taker-1     | [taker] pos=-30 cash=-15834 pnl=-28989 fills=374
+taker-1     | [taker] pos=-15 cash=-23004 pnl=-30122 fills=379
+taker-1     | [taker] pos=-15 cash=-23004 pnl=-30122 fills=379
+taker-1     | [taker] pos=-15 cash=-23004 pnl=-30076 fills=379
+taker-1     | [taker] pos=-15 cash=-23004 pnl=-30076 fills=379
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29724 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29739 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29739 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29679 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29679 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29679 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29679 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29694 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29634 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29634 fills=384
+taker-1     | [taker] pos=-30 cash=-16479 pnl=-29634 fills=384
+taker-1     | [taker] pos=-15 cash=-23904 pnl=-31284 fills=389
+taker-1     | [taker] pos=-15 cash=-23904 pnl=-31276 fills=389
+taker-1     | [taker] pos=-15 cash=-23904 pnl=-31292 fills=389
+taker-1     | [taker] pos=-15 cash=-23904 pnl=-31344 fills=389
+taker-1     | [taker] pos=-30 cash=-17184 pnl=-30729 fills=394
+taker-1     | [taker] pos=-30 cash=-17184 pnl=-30729 fills=394
+taker-1     | [taker] pos=-30 cash=-17184 pnl=-30729 fills=394
+taker-1     | [taker] pos=-30 cash=-17184 pnl=-30729 fills=394
+taker-1     | [taker] pos=-30 cash=-17184 pnl=-30324 fills=394
+taker-1     | [taker] pos=-30 cash=-17184 pnl=-30429 fills=394
+taker-1     | [taker] pos=-30 cash=-17184 pnl=-30444 fills=394
+taker-1     | [taker] pos=-15 cash=-24219 pnl=-31209 fills=399
+taker-1     | [taker] pos=-15 cash=-24219 pnl=-31149 fills=399
+taker-1     | [taker] pos=-15 cash=-24219 pnl=-31179 fills=399
+taker-1     | [taker] pos=-30 cash=-17694 pnl=-30834 fills=404
+taker-1     | [taker] pos=-30 cash=-17694 pnl=-30969 fills=404
+taker-1     | [taker] pos=-30 cash=-17694 pnl=-30864 fills=404
+taker-1     | [taker] pos=-30 cash=-17694 pnl=-30834 fills=404
+taker-1     | [taker] pos=-30 cash=-17694 pnl=-30924 fills=404
+taker-1     | [taker] pos=-30 cash=-17694 pnl=-30849 fills=404
+taker-1     | [taker] pos=-30 cash=-17694 pnl=-30894 fills=404
+taker-1     | [taker] pos=-30 cash=-17694 pnl=-30894 fills=404
+taker-1     | [taker] pos=-30 cash=-17694 pnl=-30924 fills=404
+taker-1     | [taker] pos=-15 cash=-25944 pnl=-34134 fills=409
+taker-1     | [taker] pos=-15 cash=-25944 pnl=-34164 fills=409
+taker-1     | [taker] pos=-15 cash=-25944 pnl=-34172 fills=409
+taker-1     | [taker] pos=0 cash=-34599 pnl=-34599 fills=414
+taker-1     | [taker] pos=0 cash=-34599 pnl=-34599 fills=414
+taker-1     | [taker] pos=0 cash=-34599 pnl=-34599 fills=414
+taker-1     | [taker] pos=15 cash=-43944 pnl=-34704 fills=419
+taker-1     | [taker] pos=15 cash=-43944 pnl=-34614 fills=419
+taker-1     | [taker] pos=15 cash=-43944 pnl=-34704 fills=419
+taker-1     | [taker] pos=15 cash=-43944 pnl=-34644 fills=419
+taker-1     | [taker] pos=30 cash=-53799 pnl=-34299 fills=424
+taker-1     | [taker] pos=30 cash=-53799 pnl=-34194 fills=424
+taker-1     | [taker] pos=30 cash=-53799 pnl=-53799 fills=424
+taker-1     | [taker] pos=15 cash=-44934 pnl=-36062 fills=429
+taker-1     | [taker] pos=15 cash=-44934 pnl=-36062 fills=429
+taker-1     | [taker] pos=30 cash=-54714 pnl=-35364 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-35394 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-35514 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-35454 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-34119 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-34089 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-32634 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-32634 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-32754 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-32634 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-31854 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-31854 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-31974 fills=434
+taker-1     | [taker] pos=30 cash=-54714 pnl=-31959 fills=434
+taker-1     | [taker] pos=15 cash=-44094 pnl=-33414 fills=439
+taker-1     | [taker] pos=15 cash=-44094 pnl=-33466 fills=439
+taker-1     | [taker] pos=15 cash=-44094 pnl=-33466 fills=439
+taker-1     | [taker] pos=0 cash=-34044 pnl=-34044 fills=444
+taker-1     | [taker] pos=0 cash=-34044 pnl=-34044 fills=444
+taker-1     | [taker] pos=0 cash=-34044 pnl=-34044 fills=444
+taker-1     | [taker] pos=0 cash=-34044 pnl=-34044 fills=444
+taker-1     | [taker] pos=-15 cash=-24654 pnl=-34082 fills=449
+taker-1     | [taker] pos=-15 cash=-24654 pnl=-34096 fills=449
+taker-1     | [taker] pos=-15 cash=-24654 pnl=-34096 fills=449
+taker-1     | [taker] pos=-30 cash=-15639 pnl=-33759 fills=454
+taker-1     | [taker] pos=-30 cash=-15639 pnl=-33879 fills=454
+taker-1     | [taker] pos=-30 cash=-15639 pnl=-33759 fills=454
+taker-1     | [taker] pos=-30 cash=-15639 pnl=-33879 fills=454
+taker-1     | [taker] pos=-30 cash=-15639 pnl=-32664 fills=454
+taker-1     | [taker] pos=-30 cash=-15639 pnl=-32664 fills=454
+taker-1     | [taker] pos=-30 cash=-15639 pnl=-32679 fills=454
+taker-1     | [taker] pos=-27 cash=-19557 pnl=-36338 fills=465
+taker-1     | [taker] pos=-27 cash=-19557 pnl=-36338 fills=465
+taker-1     | [taker] pos=-27 cash=-19557 pnl=-36338 fills=465
+taker-1     | [taker] pos=-30 cash=-17832 pnl=-35097 fills=466
+taker-1     | [taker] pos=-30 cash=-17832 pnl=-35127 fills=466
+taker-1     | [taker] pos=-30 cash=-17832 pnl=-35172 fills=466
+taker-1     | [taker] pos=-30 cash=-17832 pnl=-35187 fills=466
+taker-1     | [taker] pos=-24 cash=-24381 pnl=-39885 fills=484
+taker-1     | [taker] pos=-30 cash=-20793 pnl=-38928 fills=486
+taker-1     | [taker] pos=-30 cash=-20793 pnl=-38973 fills=486
+taker-1     | [taker] pos=-30 cash=-20793 pnl=-38853 fills=486
+taker-1     | [taker] pos=-15 cash=-30708 pnl=-40623 fills=491
+taker-1     | [taker] pos=-15 cash=-30708 pnl=-40570 fills=491
+taker-1     | [taker] pos=-15 cash=-30708 pnl=-40578 fills=491
